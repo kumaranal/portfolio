@@ -31,21 +31,25 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 delay-600">
-          <Button 
-            size="lg"
-            className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-semibold px-8 py-6 text-base gap-2 hover-glow"
-          >
-            <Code2 className="w-5 h-5" />
-            View Projects
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-border hover:border-primary/50 hover:bg-primary/10 px-8 py-6 text-base transition-all duration-300"
-          >
-            Contact Me
-          </Button>
+          <a href="#projects">
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-semibold px-8 py-6 text-base gap-2 hover-glow"
+            >
+              <Code2 className="w-5 h-5" />
+              View Projects
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </a>
+          <a href="#contact">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-border hover:border-primary/50 hover:bg-primary/10 px-8 py-6 text-base transition-all duration-300"
+            >
+              Contact Me
+            </Button>
+          </a>
         </div>
 
         {/* Scroll indicator */}
