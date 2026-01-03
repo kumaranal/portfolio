@@ -203,20 +203,11 @@ const ContactSection = () => {
 
               <Button
                 type="submit"
-                disabled={isLoading}
-                className="w-full h-12 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-semibold gap-2 hover-glow transition-all duration-300"
+                disabled={true}
+                className="w-full h-12 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-semibold gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                Send Message (Coming Soon)
               </Button>
             </form>
           </div>
