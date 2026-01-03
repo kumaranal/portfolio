@@ -11,6 +11,11 @@ const companies = [
     url: 'https://xotiv.com/',
     logo: 'XOTIV',
   },
+  {
+    name: 'GNAPI TECHNOLOGIES',
+    url: 'https://gnapitechnologies.com/',
+    logo: 'GNAPI',
+  },
 ];
 
 const ExperienceSection = () => {
