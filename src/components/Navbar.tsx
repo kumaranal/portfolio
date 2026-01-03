@@ -51,14 +51,16 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <Button 
-            variant="outline" 
-            size="sm"
-            className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Resume
-          </Button>
+          <a href="/AnalBiswas_Resume.pdf" download="AnalBiswas_Resume.pdf">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -87,14 +89,16 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button 
-            variant="outline" 
-            size="sm"
-            className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-fit gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Resume
-          </Button>
+          <a href="/AnalBiswas_Resume.pdf" download="AnalBiswas_Resume.pdf">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-fit gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </Button>
+          </a>
         </div>
       </div>
     </nav>
