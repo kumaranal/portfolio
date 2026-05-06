@@ -1,55 +1,65 @@
-import { 
-  Layers, 
-  Server, 
-  Cloud, 
-  Database, 
-  GitBranch, 
-  Code, 
-  Puzzle 
-} from 'lucide-react';
+import {
+  Layers,
+  Server,
+  Cloud,
+  Database,
+  GitBranch,
+  Code,
+  Puzzle,
+} from "lucide-react";
 
 const skillCategories = [
   {
-    title: 'Frontend Technologies',
+    title: "Frontend Technologies",
     icon: Layers,
-    skills: ['Angular', 'React', 'Next.js', 'HTML & CSS'],
-    color: 'from-blue-500 to-cyan-400',
+    skills: ["Angular", "React", "Next.js", "HTML & CSS"],
+    color: "from-blue-500 to-cyan-400",
   },
   {
-    title: 'Backend Technologies',
+    title: "Backend Technologies",
     icon: Server,
-    skills: ['Node.js', 'Express.js', 'Nest.js'],
-    color: 'from-green-500 to-emerald-400',
+    skills: ["Node.js", "Express.js", "Nest.js", "FastAPI", "Pyramid"],
+    color: "from-green-500 to-emerald-400",
   },
   {
-    title: 'Cloud Platforms',
+    title: "Cloud Platforms",
     icon: Cloud,
-    skills: ['AWS', 'Vercel'],
-    color: 'from-orange-500 to-amber-400',
+    skills: ["AWS", "Vercel", "Coolify"],
+    color: "from-orange-500 to-amber-400",
   },
   {
-    title: 'Database Technologies',
+    title: "Database Technologies",
     icon: Database,
-    skills: ['SQL/PostgreSQL', 'NoSQL/MongoDB', 'GraphQL'],
-    color: 'from-purple-500 to-pink-400',
+    skills: ["SQL/PostgreSQL", "NoSQL/MongoDB", "GraphQL"],
+    color: "from-purple-500 to-pink-400",
   },
   {
-    title: 'CI/CD Technologies',
+    title: "CI/CD Technologies",
     icon: GitBranch,
-    skills: ['Git', 'Jenkins', 'Docker'],
-    color: 'from-red-500 to-rose-400',
+    skills: ["Git", "Jenkins", "Docker"],
+    color: "from-red-500 to-rose-400",
   },
   {
-    title: 'Programming Languages',
+    title: "Programming Languages",
     icon: Code,
-    skills: ['TypeScript/JavaScript', 'Python', 'C/C++', 'Java'],
-    color: 'from-indigo-500 to-violet-400',
+    skills: ["TypeScript/JavaScript", "Python", "C/C++", "Java"],
+    color: "from-indigo-500 to-violet-400",
   },
   {
-    title: 'Other Technologies',
+    title: "Other Technologies",
     icon: Puzzle,
-    skills: ['Stripe', 'LangChain', 'LangGraph', 'Redis', 'RabbitMQ'],
-    color: 'from-teal-500 to-cyan-400',
+    skills: [
+      "Stripe",
+      "LangChain",
+      "LangGraph",
+      "Redis",
+      "RabbitMQ",
+      "kafka",
+      "OpenSearchDB",
+      "OpenTelemetry",
+      "Geo-Server",
+    ],
+    color: "from-teal-500 to-cyan-400",
   },
 ];
 
@@ -77,7 +87,9 @@ const SkillsSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                <div
+                  className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                >
                   <category.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="font-heading font-semibold text-lg">

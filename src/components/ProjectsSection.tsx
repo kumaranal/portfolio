@@ -1,5 +1,15 @@
-import { ExternalLink, Car, Network, TreeDeciduous, HeartPulse, Building2, GraduationCap } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import {
+  ExternalLink,
+  Car,
+  Network,
+  TreeDeciduous,
+  HeartPulse,
+  Building2,
+  GraduationCap,
+  TestTube,
+  Wrench,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface Project {
   title: string;
@@ -12,50 +22,74 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'Incentive Management System',
-    description: "An application using which FIAT AUTOMOBILE's sales team managing their offers, discounts & made strategies of sales & discounts.",
+    title: "Incentive Management System",
+    description:
+      "An application using which FIAT AUTOMOBILE's sales team managing their offers, discounts & made strategies of sales & discounts.",
     icon: Car,
-    gradient: 'from-blue-500 to-cyan-400',
-    tags: ['Enterprise', 'Sales', 'Analytics'],
+    gradient: "from-blue-500 to-cyan-400",
+    tags: ["Enterprise", "Sales", "Analytics"],
   },
   {
-    title: 'Optical Fiber Management System',
-    description: 'An application using which COMCAST CORPORATION is managing & maintaining (installation, health check etc.) of their optical fiber cable network.',
+    title: "Optical Fiber Management System",
+    description:
+      "An application using which COMCAST CORPORATION is managing & maintaining (installation, health check etc.) of their optical fiber cable network.",
     icon: Network,
-    gradient: 'from-orange-500 to-amber-400',
-    tags: ['Telecom', 'Network', 'Maintenance'],
+    gradient: "from-orange-500 to-amber-400",
+    tags: ["Telecom", "Network", "Maintenance"],
   },
   {
-    title: 'Golf Course Management System',
-    description: 'An application using which golf courses are managing & maintains their golf course area (pond, grass, trees, flag etc.).',
+    title: "Golf Course Management System",
+    description:
+      "An application using which golf courses are managing & maintains their golf course area (pond, grass, trees, flag etc.).",
     icon: TreeDeciduous,
-    url: 'https://turfassistant.com/',
-    gradient: 'from-green-500 to-emerald-400',
-    tags: ['Sports', 'Management', 'IoT'],
+    url: "https://turfassistant.com/",
+    gradient: "from-green-500 to-emerald-400",
+    tags: ["Sports", "Management", "IoT"],
   },
   {
-    title: 'Healthcare App for EKG Review',
-    description: 'An application using which patients share their EKG through the app, & institutional doctors review and send back feedback through the application.',
+    title: "Healthcare App for EKG Review",
+    description:
+      "An application using which patients share their EKG through the app, & institutional doctors review and send back feedback through the application.",
     icon: HeartPulse,
-    url: 'https://readmyrhythm.com/',
-    gradient: 'from-red-500 to-rose-400',
-    tags: ['Healthcare', 'Telemedicine', 'Mobile'],
+    url: "https://readmyrhythm.com/",
+    gradient: "from-red-500 to-rose-400",
+    tags: ["Healthcare", "Telemedicine", "Mobile"],
   },
   {
-    title: 'Real-estate Rent Management System',
-    description: 'A comprehensive platform for managing rental properties, tenant relationships, and payment processing for real estate businesses.',
+    title: "Real-estate Rent Management System",
+    description:
+      "A comprehensive platform for managing rental properties, tenant relationships, and payment processing for real estate businesses.",
     icon: Building2,
-    url: 'https://affco-dev.vercel.app/',
-    gradient: 'from-purple-500 to-pink-400',
-    tags: ['Real Estate', 'Payments', 'SaaS'],
+    url: "https://affco-dev.vercel.app/",
+    gradient: "from-purple-500 to-pink-400",
+    tags: ["Real Estate", "Payments", "SaaS"],
   },
   {
-    title: 'Sports Edu-Tech Management System',
-    description: 'An educational technology platform designed for sports training, coaching management, and athlete development tracking.',
+    title: "Sports Edu-Tech Management System",
+    description:
+      "An educational technology platform designed for sports training, coaching management, and athlete development tracking.",
     icon: GraduationCap,
-    url: 'https://elevatedev.vercel.app/',
-    gradient: 'from-indigo-500 to-violet-400',
-    tags: ['EdTech', 'Sports', 'Training'],
+    url: "https://elevatedev.vercel.app/",
+    gradient: "from-indigo-500 to-violet-400",
+    tags: ["EdTech", "Sports", "Training"],
+  },
+  {
+    title: "QA Automation Framework System ",
+    description:
+      "An automation framework for testing manual & automation testing also api testing.",
+    icon: TestTube,
+    // url: 'https://github.com/your-username/qa-automation-framework',
+    gradient: "from-yellow-500 to-orange-400",
+    tags: ["Automation", "Testing", "API", "Log monitoring"],
+  },
+  {
+    title: "Electrical instrumentation Management System",
+    description:
+      "An application using which Brightspeed are managing & maintains their electrical instruments (transformer, cable, relay, etc.).",
+    icon: Wrench,
+    url: "https://brightspeed.com/",
+    gradient: "from-lime-500 to-green-400",
+    tags: ["GIS", "Electrical", "Instrumentation", "Management"],
   },
 ];
 
@@ -71,8 +105,8 @@ const ProjectsSection = () => {
             My <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A collection of projects I've worked on throughout my professional career.
-            Each project represents unique challenges and solutions.
+            A collection of projects I've worked on throughout my professional
+            career. Each project represents unique challenges and solutions.
           </p>
         </div>
 
@@ -84,11 +118,15 @@ const ProjectsSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Gradient border effect */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${project.gradient} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500`} />
-              
+              <div
+                className={`absolute -inset-0.5 bg-gradient-to-r ${project.gradient} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500`}
+              />
+
               <div className="relative glass-card p-6 rounded-2xl h-full flex flex-col transition-all duration-500 group-hover:translate-y-[-2px]">
                 {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                >
                   <project.icon className="w-6 h-6 text-white" />
                 </div>
 
@@ -124,7 +162,9 @@ const ProjectsSection = () => {
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Visit Website</span>
-                    <span className="w-0 group-hover/link:w-2 overflow-hidden transition-all duration-300">→</span>
+                    <span className="w-0 group-hover/link:w-2 overflow-hidden transition-all duration-300">
+                      →
+                    </span>
                   </a>
                 )}
               </div>
