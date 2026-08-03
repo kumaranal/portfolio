@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .label { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 22px; letter-spacing: 0.14em; fill: #6b6b6b; text-transform: uppercase; }
+      .name { font-family: 'Arial', 'Helvetica', sans-serif; font-weight: 700; font-size: 96px; fill: #121212; letter-spacing: -0.02em; }
+      .role { font-family: 'Arial', 'Helvetica', sans-serif; font-weight: 500; font-size: 34px; fill: #4b4b4b; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="#FBFAF9" />
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#E4E2DD" stroke-width="2" />
+
+  <circle cx="90" cy="96" r="7" fill="#2563EB" />
+  <text x="112" y="104" class="label">Open to new opportunities</text>
+
+  <text x="88" y="300" class="name">ANAL KUMAR</text>
+  <text x="88" y="400" class="name">BISWAS</text>
+
+  <text x="90" y="470" class="role">Senior Software Engineer — Full-Stack &amp; Event-Driven Systems</text>
+
+  <line x1="88" y1="520" x2="1112" y2="520" stroke="#E4E2DD" stroke-width="2" />
+
+  <text x="88" y="570" class="label">analkumarbiswas.com</text>
+  <text x="1112" y="570" class="label" text-anchor="end">6+ YRS EXPERIENCE</text>
+</svg>
