@@ -8,6 +8,7 @@ import {
   GraduationCap,
   TestTube,
   Wrench,
+  Radio,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -90,6 +91,15 @@ const projects: Project[] = [
     url: "https://brightspeed.com/",
     gradient: "from-lime-500 to-green-400",
     tags: ["GIS", "Electrical", "Instrumentation", "Management"],
+  },
+  {
+    title: "AI based Live Broadcasting System",
+    description:
+      "An application using which small sport institutions can live broadcast there tournaments).",
+    icon: Radio,
+    // url: "https://brightspeed.com/",
+    gradient: "from-fuchsia-500 to-pink-400",
+    tags: ["Broadcast", "Sports", "Entertainment", "Management"],
   },
 ];
 

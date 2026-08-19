@@ -36,7 +36,7 @@ const skillCategories = [
   {
     title: "CI/CD Technologies",
     icon: GitBranch,
-    skills: ["Git", "Jenkins", "Docker"],
+    skills: ["Git", "Jenkins", "Docker", "kubernetes"],
     color: "from-red-500 to-rose-400",
   },
   {
