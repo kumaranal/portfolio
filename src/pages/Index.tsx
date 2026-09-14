@@ -1,11 +1,10 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StatsBar from "@/components/StatsBar";
-import ProofSection from "@/components/ProofSection";
-import ApproachSection from "@/components/ApproachSection";
-import WorkSection from "@/components/WorkSection";
-import DeepDiveSection from "@/components/DeepDiveSection";
-import SkillsSection from "@/components/SkillsSection";
+import MetricsSection from "@/components/MetricsSection";
+import CompaniesSection from "@/components/CompaniesSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import ToolkitSection from "@/components/ToolkitSection";
+import EducationSection from "@/components/EducationSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -16,12 +15,11 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <StatsBar />
-        <ProofSection />
-        <ApproachSection />
-        <WorkSection />
-        <DeepDiveSection />
-        <SkillsSection />
+        <MetricsSection />
+        <CompaniesSection />
+        <ProjectsSection />
+        <ToolkitSection />
+        <EducationSection />
         <AboutSection />
         <ContactSection />
       </main>
