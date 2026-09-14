@@ -1,65 +1,51 @@
-import { ArrowRight, Code2, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import PortfolioImage from "@/components/PortfolioImage";
+import { profile } from "@/data/portfolio";
 
 const HeroSection = () => {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative pt-20"
-    >
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] animate-float-delayed" />
-
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full mb-8 animate-fade-in-up opacity-0">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm text-muted-foreground">Available for new opportunities</span>
-        </div>
-
-        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in-up opacity-0 delay-200">
-          Build{' '}
-          <span className="text-gradient-animate">better products</span>
-          <br />
-          with me
-        </h1>
-
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up opacity-0 delay-400 leading-relaxed">
-          With over years of hands-on experience in software development, I specialize in
-          crafting scalable, innovative solutions to complex challenges. Bridging technical
-          excellence with business goals to drive impactful results.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 delay-600">
-          <a href="#projects">
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-semibold px-8 py-6 text-base gap-2 hover-glow"
-            >
-              <Code2 className="w-5 h-5" />
-              View Projects
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </a>
-          <a href="#contact">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-border hover:border-primary/50 hover:bg-primary/10 px-8 py-6 text-base transition-all duration-300"
-            >
-              Contact Me
-            </Button>
-          </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-3 bg-primary rounded-full animate-pulse" />
+    <header id="top" className="border-b-2 border-border">
+      <div className="mx-auto max-w-[1320px] px-5 pb-0 pt-10 sm:px-8 sm:pt-16 md:pt-20">
+        <div className="flex flex-wrap items-end gap-8 md:gap-12">
+          <div className="min-w-0 flex-[2_1_460px] pb-8 md:pb-14">
+            <div className="mb-6 font-heading text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground md:mb-8">
+              Senior Software Engineer
+            </div>
+            <h1 className="mb-5 max-w-[18ch] font-heading text-[38px] font-extrabold leading-[0.96] tracking-tight sm:text-6xl md:text-7xl lg:text-[86px]">
+              Software your business can rely on.
+            </h1>
+            <p className="mb-7 max-w-[48ch] text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+              I'm Anal Biswas — a senior software engineer who has spent six years building cloud
+              platforms for live broadcast, healthcare, finance and telecom. My work is quiet by
+              design: systems that stay available, data you can trust, and teams that ship with
+              confidence.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={profile.resumeFile} download>
+                <Button className="rounded-none border-2 border-primary bg-primary px-5 text-primary-foreground hover:bg-primary/90">
+                  Download resume
+                </Button>
+              </a>
+              <a href="#contact">
+                <Button variant="outline" className="rounded-none border-2 px-5">
+                  Start a conversation
+                </Button>
+              </a>
+            </div>
+          </div>
+          <div className="min-w-0 flex-[1_1_280px] max-w-[420px] pb-8 md:pb-14">
+            <div className="overflow-hidden border-2 border-border">
+              <PortfolioImage
+                src="/portrait.jpg"
+                alt="Portrait of Anal Kumar Biswas"
+                className="aspect-[4/5] w-full object-cover"
+                style={{ objectPosition: "50% 18%" }}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 };
 

@@ -1,106 +1,86 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
+import ScrollProgress from "@/components/ScrollProgress";
+
+const navLinks = [
+  { name: "Proof", href: "#proof" },
+  { name: "Approach", href: "#approach" },
+  { name: "Work", href: "#work" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'glass-card py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a 
-          href="#home" 
-          className="text-xl font-heading font-bold gradient-text hover:opacity-80 transition-opacity"
-        >
+    <nav className="sticky top-0 z-50 border-b-2 border-border bg-background">
+      <div className="mx-auto flex max-w-[1320px] flex-wrap items-center gap-4 px-5 py-3 sm:px-8">
+        <a href="#top" className="font-heading text-base font-extrabold tracking-tight">
           Anal Kumar Biswas
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 ml-auto">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative group"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <a href="/AnalBiswas_Resume.pdf" download="AnalBiswas_Resume.pdf">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Resume
-            </Button>
-          </a>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={toggleTheme}
+            aria-label="Toggle color theme"
+            className="min-w-[104px] justify-start rounded-none border-2 text-xs font-semibold uppercase tracking-wide"
+          >
+            {theme === "dark" ? "Light" : "Dark"} mode
+          </Button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden ml-auto p-2 text-foreground"
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden absolute top-full left-0 right-0 glass-card overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
-          <a href="/AnalBiswas_Resume.pdf" download="AnalBiswas_Resume.pdf">
-            <Button 
-              variant="outline" 
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t-2 border-border bg-background">
+          <div className="flex flex-col gap-1 px-5 py-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="py-2 text-sm text-muted-foreground hover:text-foreground"
+              >
+                {link.name}
+              </a>
+            ))}
+            <Button
+              type="button"
+              variant="outline"
               size="sm"
-              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-fit gap-2"
+              onClick={toggleTheme}
+              className="mt-2 w-fit justify-start rounded-none border-2 text-xs font-semibold uppercase tracking-wide"
             >
-              <Download className="w-4 h-4" />
-              Resume
+              {theme === "dark" ? "Light" : "Dark"} mode
             </Button>
-          </a>
+          </div>
         </div>
-      </div>
+      )}
+
+      <ScrollProgress />
     </nav>
   );
 };
