@@ -12,13 +12,13 @@ const HeroSection = () => {
               Senior Software Engineer
             </div>
             <h1 className="mb-5 max-w-[18ch] font-heading text-[38px] font-extrabold leading-[0.96] tracking-tight sm:text-6xl md:text-7xl lg:text-[86px]">
-              Software your business can rely on.
+              I build distributed systems that hold up under real traffic.
             </h1>
             <p className="mb-7 max-w-[48ch] text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
-              I'm Anal Biswas — a senior software engineer who has spent six years building cloud
-              platforms for live broadcast, healthcare, finance and telecom. My work is quiet by
-              design: systems that stay available, data you can trust, and teams that ship with
-              confidence.
+              I'm Anal Biswas — a senior software engineer with six years building cloud platforms
+              for live broadcast, healthcare, finance and telecom. I care about the systems that
+              have to be right the first time: available under real load, accurate under retries,
+              and easy to reason about when something goes wrong.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={profile.resumeFile} download>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/portfolio";
+import Reveal from "@/components/Reveal";
 
 const ContactSection = () => {
   const [copied, setCopied] = useState(false);
@@ -18,19 +19,22 @@ const ContactSection = () => {
   return (
     <section id="contact" className="bg-primary text-primary-foreground">
       <div className="mx-auto max-w-[1320px] px-5 py-12 sm:px-8 md:py-16 lg:py-24">
-        <div className="mb-6 font-heading text-xs font-semibold uppercase tracking-[0.14em] md:mb-8">
-          07 · Contact
-        </div>
+        {/* <div className="mb-6 font-heading text-xs font-semibold uppercase tracking-[0.14em] md:mb-8">
+          06 · Contact
+        </div> */}
         <h2 className="mb-7 max-w-[24ch] font-heading text-[30px] font-extrabold leading-[0.98] tracking-tight md:mb-9 md:text-6xl lg:text-[72px]">
-          Have something that has to stay up? I would like to help.
+          Open to my next role — let's talk about where I'd fit.
         </h2>
-        <div className="flex flex-wrap items-end gap-8 md:gap-14">
+        <Reveal className="flex flex-wrap items-end gap-8 md:gap-14">
           <div className="min-w-0 flex-[1_1_300px] grid gap-3">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5 border-t-2 border-primary-foreground/50 pt-2.5">
               <span className="w-[68px] flex-none font-heading text-[11px] font-semibold uppercase tracking-[0.12em]">
                 Email
               </span>
-              <a href={`mailto:${profile.email}`} className="text-base underline underline-offset-4">
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-base underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
+              >
                 {profile.email}
               </a>
             </div>
@@ -38,7 +42,10 @@ const ContactSection = () => {
               <span className="w-[68px] flex-none font-heading text-[11px] font-semibold uppercase tracking-[0.12em]">
                 Phone
               </span>
-              <a href={profile.phoneHref} className="text-base underline underline-offset-4">
+              <a
+                href={profile.phoneHref}
+                className="text-base underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
+              >
                 {profile.phone}
               </a>
             </div>
@@ -50,7 +57,7 @@ const ContactSection = () => {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base underline underline-offset-4"
+                className="text-base underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
               >
                 {profile.linkedinLabel}
               </a>
@@ -63,7 +70,7 @@ const ContactSection = () => {
                 href={profile.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base underline underline-offset-4"
+                className="text-base underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
               >
                 analkumarbiswas.com
               </a>
@@ -84,7 +91,7 @@ const ContactSection = () => {
               {copied ? "Copied" : "Copy email"}
             </Button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

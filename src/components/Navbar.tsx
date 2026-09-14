@@ -5,10 +5,12 @@ import { useTheme } from "@/hooks/use-theme";
 import ScrollProgress from "@/components/ScrollProgress";
 
 const navLinks = [
-  { name: "Proof", href: "#proof" },
-  { name: "Approach", href: "#approach" },
-  { name: "Work", href: "#work" },
-  { name: "Skills", href: "#skills" },
+  { name: "Metrics", href: "#metrics" },
+  { name: "Companies", href: "#companies" },
+  { name: "Projects", href: "#projects" },
+  { name: "Toolkit", href: "#toolkit" },
+  { name: "Education", href: "#education" },
+  { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -28,9 +30,10 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="group relative text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.name}
+              <span className="absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 bg-primary transition-transform duration-200 ease-out group-hover:scale-x-100" />
             </a>
           ))}
           <Button
