@@ -1,24 +1,28 @@
-import ParticleBackground from '@/components/ParticleBackground';
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
-import ExperienceSection from '@/components/ExperienceSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import SkillsSection from '@/components/SkillsSection';
-import EducationSection from '@/components/EducationSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import StatsBar from "@/components/StatsBar";
+import ProofSection from "@/components/ProofSection";
+import ApproachSection from "@/components/ApproachSection";
+import WorkSection from "@/components/WorkSection";
+import DeepDiveSection from "@/components/DeepDiveSection";
+import SkillsSection from "@/components/SkillsSection";
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
-      <ParticleBackground />
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
         <HeroSection />
-        <ExperienceSection />
-        <ProjectsSection />
+        <StatsBar />
+        <ProofSection />
+        <ApproachSection />
+        <WorkSection />
+        <DeepDiveSection />
         <SkillsSection />
-        <EducationSection />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />

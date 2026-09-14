@@ -1,111 +1,45 @@
-import {
-  Layers,
-  Server,
-  Cloud,
-  Database,
-  GitBranch,
-  Code,
-  Puzzle,
-} from "lucide-react";
-
-const skillCategories = [
-  {
-    title: "Frontend Technologies",
-    icon: Layers,
-    skills: ["Angular", "React", "Next.js", "HTML & CSS"],
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    title: "Backend Technologies",
-    icon: Server,
-    skills: ["Node.js", "Express.js", "Nest.js", "FastAPI", "Pyramid"],
-    color: "from-green-500 to-emerald-400",
-  },
-  {
-    title: "Cloud Platforms",
-    icon: Cloud,
-    skills: ["AWS", "Vercel", "Coolify"],
-    color: "from-orange-500 to-amber-400",
-  },
-  {
-    title: "Database Technologies",
-    icon: Database,
-    skills: ["SQL/PostgreSQL", "NoSQL/MongoDB", "GraphQL"],
-    color: "from-purple-500 to-pink-400",
-  },
-  {
-    title: "CI/CD Technologies",
-    icon: GitBranch,
-    skills: ["Git", "Jenkins", "Docker", "kubernetes"],
-    color: "from-red-500 to-rose-400",
-  },
-  {
-    title: "Programming Languages",
-    icon: Code,
-    skills: ["TypeScript/JavaScript", "Python", "C/C++", "Java"],
-    color: "from-indigo-500 to-violet-400",
-  },
-  {
-    title: "Other Technologies",
-    icon: Puzzle,
-    skills: [
-      "Stripe",
-      "LangChain",
-      "LangGraph",
-      "Redis",
-      "RabbitMQ",
-      "kafka",
-      "OpenSearchDB",
-      "OpenTelemetry",
-      "Geo-Server",
-    ],
-    color: "from-teal-500 to-cyan-400",
-  },
-];
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { skillGroups } from "@/data/portfolio";
 
 const SkillsSection = () => {
+  const [active, setActive] = useState(skillGroups[0].id);
+  const current = skillGroups.find((g) => g.id === active)!;
+
   return (
-    <section id="skills" className="py-24 relative">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-            Skills & <span className="gradient-text">Technology</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Technologies I have experience with
-          </p>
+    <section id="skills" className="border-b-2 border-border">
+      <div className="mx-auto max-w-[1320px] px-5 py-11 sm:px-8 md:py-16 lg:py-[88px]">
+        <div className="mb-6 flex items-baseline gap-3.5 md:mb-8">
+          <span className="font-heading text-[13px] font-extrabold text-primary">05</span>
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight md:text-4xl">The toolkit</h2>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <div
-              key={category.title}
-              className="glass-card p-6 rounded-2xl hover-glow transition-all duration-500 group animate-fade-in-up opacity-0"
-              style={{ animationDelay: `${index * 100}ms` }}
+        <div className="mb-5 flex flex-wrap gap-2">
+          {skillGroups.map((group) => (
+            <Button
+              key={group.id}
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setActive(group.id)}
+              className={`rounded-none border-2 justify-start ${
+                active === group.id ? "border-primary bg-primary text-primary-foreground hover:bg-primary/90" : ""
+              }`}
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <category.icon className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="font-heading font-semibold text-lg">
-                  {category.title}
-                </h3>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+              {group.label}
+            </Button>
           ))}
+        </div>
+        <div className="min-h-[200px]">
+          <table className="w-full border-collapse text-left">
+            <tbody>
+              {current.rows.map((row) => (
+                <tr key={row.label} className="border-t-2 border-border last:border-b-2">
+                  <td className="w-[34%] py-3 pr-4 align-top font-semibold">{row.label}</td>
+                  <td className="py-3 align-top text-sm text-muted-foreground sm:text-base">{row.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
