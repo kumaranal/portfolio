@@ -1,18 +1,18 @@
 export const profile = {
   name: "Anal Kumar Biswas",
   role: "Senior Software Engineer",
-  location: "India · UTC+5:30",
+  location: "Kolkata, India · Open to relocation",
   email: "kumaranal.official@gmail.com",
   phone: "+91 70030 80703",
   phoneHref: "tel:+917003080703",
-  linkedin: "https://linkedin.com/in/anal-kumar-biswas-733488356",
-  linkedinLabel: "anal-kumar-biswas",
+  linkedin: "https://www.linkedin.com/in/analkumarbiswas/",
+  linkedinLabel: "analkumarbiswas",
   website: "https://analkumarbiswas.com",
   resumeFile: "/Anal_Kumar_Biswas_Resume.pdf",
 };
 
 export const heroStats = [
-  { value: "99.99%", label: "availability held through peak live traffic" },
+  { value: "99.9%", label: "availability held through peak live traffic" },
   { value: "1M+", label: "events processing experience" },
   { value: "10,000+", label: "concurrent users served at once" },
   { value: "6", label: "years shipping to production" },
@@ -70,7 +70,7 @@ export const companies: Company[] = [
         approach:
           "I owned the architecture and the migration to a WebRTC and LiveKit media plane on Amazon EKS — horizontal scaling instead of vertical, with autoscaling tuned to the traffic curve of a live event.",
         result:
-          "10,000+ concurrent viewers, 50+ simultaneous camera feeds, 99.99% availability at peak.",
+          "10,000+ concurrent viewers, 50+ simultaneous camera feeds, 99.9% availability at peak.",
         tier: "star",
         diagram: [
           { label: "50+ feeds", caption: "venue ingest" },
@@ -90,7 +90,7 @@ export const companies: Company[] = [
         problem:
           "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
         approach:
-          "I led the move to 15+ Kafka-based NestJS services: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope.",
+          "I led the move to 15+ Kafka-based NestJS services: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I configured Keycloak SSO with Microsoft Entra ID for 5,000+ users across 12 applications, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
         result:
           "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery.",
         tier: "star",
@@ -114,20 +114,7 @@ export const companies: Company[] = [
         approach:
           "I designed the FastAPI, GeoServer and MongoDB services with the GIS team, provisioned the infrastructure in Terraform, and optimised the geospatial queries behind the map.",
         result:
-          "Real-time lifecycle tracking for 100,000+ assets, with map rendering roughly 50% faster.",
-        tier: "showcase",
-      },
-      {
-        id: "p4",
-        title: "AI Developer Automation Agents",
-        domain: "AI & Developer Tooling",
-        meta: "MCP · Claude Code · Python",
-        problem:
-          "Every new engineer lost most of a day to environment setup, and build failures were diagnosed by whoever happened to recognise the error.",
-        approach:
-          "I engineered automation on Claude Code and the Model Context Protocol, wired to orchestrated Ubuntu environments, covering provisioning, dependencies and build-failure diagnostics.",
-        result:
-          "Environment setup fell from roughly four hours to under fifteen minutes.",
+          "Real-time lifecycle tracking for 100,000+ assets, with map rendering roughly 50% faster. A RAG pipeline over the standards and manuals library also cut a typical field lookup from 30–45 minutes to under a minute, with citation-backed answers.",
         tier: "showcase",
       },
     ],
@@ -137,6 +124,19 @@ export const companies: Company[] = [
     role: "Full Stack Developer",
     dates: "December 2023 — June 2025",
     items: [
+      {
+        id: "p9",
+        title: "Golf Course & Tournament Management Platform",
+        domain: "Multi-tenant SaaS",
+        meta: "Angular · Node.js · GraphQL",
+        problem:
+          "Clubs ran tee-time bookings, memberships, handicaps and tournament draws on spreadsheets, and the business wanted one product it could sell to many clubs rather than build per-client.",
+        approach:
+          "I architected the Angular portals and Node.js/Express APIs over PostgreSQL as a single multi-tenant codebase, added GraphQL for the club dashboards — each needing a different slice of the same tee-sheet and scoring data — and moved the stack onto AWS ECS with Jenkins CI/CD.",
+        result:
+          "Live leaderboards and real-time scorecard reconciliation for every client club, with release time cut from 45 to 10 minutes.",
+        tier: "showcase",
+      },
       {
         id: "p5",
         title: "DEVEBOL — AI Sports Education Platform",
@@ -257,9 +257,9 @@ export const deepDives: DeepDive[] = [
     failureModes:
       "A node failing mid-match had to cost a reconnect, not a dropped broadcast — the media plane is stateless enough that a viewer's connection re-establishes against a healthy node without losing the stream. The traffic pattern that actually threatens the system isn't gradual growth, it's the vertical jump at kickoff, so scaling is tuned ahead of the known shape of a tournament schedule rather than purely reactive to current load.",
     scale:
-      "50+ simultaneous camera feeds, 10,000+ concurrent viewers, 99.99% availability sustained through peak tournament traffic.",
+      "50+ simultaneous camera feeds, 10,000+ concurrent viewers, 99.9% availability sustained through peak tournament traffic.",
     result:
-      "10,000+ concurrent viewers and 50+ simultaneous camera feeds served at 99.99% availability at peak — on the same traffic that used to drop feeds and cap latency guesses days in advance.",
+      "10,000+ concurrent viewers and 50+ simultaneous camera feeds served at 99.9% availability at peak — on the same traffic that used to drop feeds and cap latency guesses days in advance.",
     whatIWouldChange:
       "Load-test the exact shape of a kickoff spike earlier. The autoscaling policy was tuned against production data from the first tournament on the new platform, which meant that first live event carried more risk than every one since.",
   },
@@ -348,15 +348,15 @@ export const skillGroups = [
     id: "a",
     label: "Languages & backend",
     rows: [
-      { label: "Languages", value: "Python · Java · JavaScript · TypeScript" },
+      { label: "Languages", value: "Python · Java · JavaScript · TypeScript · C++ · SQL" },
       {
         label: "Backend frameworks",
-        value: "FastAPI · NestJS · Node.js · Express.js ",
+        value: "FastAPI · NestJS · Node.js · Express.js · Spring Boot",
       },
       {
         label: "API & service design",
         value:
-          "REST APIs · service contracts · asynchronous processing · idempotency",
+          "REST APIs · GraphQL · service contracts · asynchronous processing · idempotency",
       },
     ],
   },
@@ -367,7 +367,7 @@ export const skillGroups = [
       {
         label: "Distributed systems",
         value:
-          "Microservices · event-driven architecture · Kafka · retries & dead-letter queues · system design",
+          "Microservices · event-driven architecture · Kafka · RabbitMQ · WebRTC · retries & dead-letter queues · system design",
       },
       {
         label: "Cloud platforms",
@@ -375,7 +375,7 @@ export const skillGroups = [
       },
       {
         label: "Containers & infrastructure",
-        value: "Kubernetes · Docker · Terraform · infrastructure as code",
+        value: "Kubernetes · Docker · Helm · Terraform · infrastructure as code",
       },
     ],
   },
@@ -385,12 +385,12 @@ export const skillGroups = [
     rows: [
       {
         label: "Databases",
-        value: "PostgreSQL · MongoDB · Redis · OpenSearch",
+        value: "PostgreSQL · MongoDB · Redis · OpenSearch · Supabase · Prisma · Sequelize",
       },
       {
         label: "Observability",
         value:
-          "OpenTelemetry · distributed tracing · metrics · logging · production troubleshooting",
+          "OpenTelemetry · distributed tracing · metrics · logging · Swagger · Jest · production troubleshooting",
       },
       {
         label: "Security & identity",
@@ -405,7 +405,7 @@ export const skillGroups = [
     rows: [
       {
         label: "AI & developer automation",
-        value: "Model Context Protocol · Claude Code · LangChain",
+        value: "LLMs · RAG · Model Context Protocol · Claude Code · LangChain",
       },
       { label: "Frontend", value: "React · Next.js · Angular · Electron" },
       {
@@ -431,3 +431,33 @@ export const about = {
   },
   basesd: {},
 };
+
+export type Certification = {
+  title: string;
+  issuer: string;
+  issued: string;
+  credentialId?: string;
+  credentialUrl?: string;
+};
+
+export const certifications: Certification[] = [
+  {
+    title: "Claude Code 101",
+    issuer: "Claude Academy · Anthropic",
+    issued: "September 2026",
+    credentialId: "c749e82dcf22d97d77eaf13e7caa46db",
+    credentialUrl: "https://academy.claude.com/verify/c749e82dcf22d97d77eaf13e7caa46db",
+  },
+  {
+    title: "Certified Associate JavaScript Programmer",
+    issuer: "JS Institute",
+    issued: "January 2026",
+    credentialId: "gixL.k6x8.KKpc",
+  },
+  {
+    title: "PCAP — Certified Associate in Python Programming",
+    issuer: "OpenEDG",
+    issued: "October 2025",
+    credentialUrl: "https://verify.openedg.org/?id=2F2G.Bwkw.p7zS",
+  },
+];
