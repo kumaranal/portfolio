@@ -1,3 +1,5 @@
+import { externalLinks } from "@/config/links";
+
 export const profile = {
   name: "Anal Kumar Biswas",
   role: "Senior Software Engineer",
@@ -5,10 +7,11 @@ export const profile = {
   email: "kumaranal.official@gmail.com",
   phone: "+91 70030 80703",
   phoneHref: "tel:+917003080703",
-  linkedin: "https://www.linkedin.com/in/analkumarbiswas/",
-  linkedinLabel: "analkumarbiswas",
+  linkedin: "https://www.linkedin.com/in/anal-kumar-biswas-733488356/",
+  linkedinLabel: "anal-kumar-biswas-733488356",
   website: "https://analkumarbiswas.com",
-  resumeFile: "/Anal_Kumar_Biswas_Resume.pdf",
+  resumeFile: externalLinks.resumeUrl,
+  fullResumeFile: externalLinks.fullResumeUrl,
 };
 
 export const heroStats = [
@@ -86,18 +89,18 @@ export const companies: Company[] = [
         id: "p2",
         title: "Enterprise QA Automation & Event-Driven Platform",
         domain: "Distributed Systems",
-        meta: "Kafka · NestJS · 15+ services",
+        meta: "Kafka · NestJS · 11 services",
         problem:
           "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
         approach:
-          "I led the move to 15+ Kafka-based NestJS services: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I configured Keycloak SSO with Microsoft Entra ID for 5,000+ users across 12 applications, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
+          "I decomposed the monolithic runner into 11 Kafka-based NestJS microservices: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I integrated Keycloak for OAuth 2.0/OIDC single sign-on, automated bug tracking and Jira ticketing workflows, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
         result:
           "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery.",
         tier: "star",
         diagram: [
           { label: "Producers", caption: "runners, schedulers" },
           { label: "Kafka topics", caption: "keyed, replayable" },
-          { label: "15+ consumers", caption: "idempotent, retry + DLQ" },
+          { label: "11 consumers", caption: "idempotent, retry + DLQ" },
           { label: "Telemetry store", caption: "1M events / day" },
         ],
         diagramCaption:
@@ -106,15 +109,15 @@ export const companies: Company[] = [
       },
       {
         id: "p3",
-        title: "Spatial Asset Management System",
+        title: "Electrical Instrumentation System (IQGeo)",
         domain: "GIS & Spatial Data",
-        meta: "FastAPI · GeoServer · Terraform",
+        meta: "FastAPI · GeoServer · MongoDB",
         problem:
-          "Electrical infrastructure had to be tracked through its lifecycle on an interactive map — a hundred thousand assets whose spatial queries were too slow to browse.",
+          "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
         approach:
-          "I designed the FastAPI, GeoServer and MongoDB services with the GIS team, provisioned the infrastructure in Terraform, and optimised the geospatial queries behind the map.",
+          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, deployed on AWS with Jenkins.",
         result:
-          "Real-time lifecycle tracking for 100,000+ assets, with map rendering roughly 50% faster. A RAG pipeline over the standards and manuals library also cut a typical field lookup from 30–45 minutes to under a minute, with citation-backed answers.",
+          "A single interactive system for tracking and maintaining electrical infrastructure assets, replacing scattered records with one spatial view.",
         tier: "showcase",
       },
     ],
@@ -139,15 +142,28 @@ export const companies: Company[] = [
       },
       {
         id: "p5",
-        title: "DEVEBOL — AI Sports Education Platform",
+        title: "DEVEBOL — AI Sports Club Management Platform",
         domain: "AI Product Engineering",
-        meta: "FastAPI · LangChain · Redis",
+        meta: "Next.js · Prisma · LangChain",
         problem:
-          "All the traffic arrives during the match, and the AI features were the slowest, most expensive thing on the request path.",
+          "Sports clubs ran rosters, schedules and member communication by hand, with no AI assistance and no reliable way to reach members in real time.",
         approach:
-          "FastAPI behind a Next.js front end, LangChain workflows moved into the service layer, and Redis in front of the hot reads so Postgres only saw durable writes.",
+          "I built the platform on Next.js with Prisma over Supabase, added LangChain and Redis for the AI-assisted features, and wired up real-time member communication through Firebase push notifications, Twilio and SendGrid.",
         result:
-          "500+ requests per second sustained at peak, with roughly 300ms off API response time.",
+          "Roster management, AI-assisted workflows and member notifications running on one platform instead of manual coordination.",
+        tier: "showcase",
+      },
+      {
+        id: "p10",
+        title: "AFFCO — Property & Tenant Management SaaS",
+        domain: "PropTech",
+        meta: "Next.js · Prisma · Stripe",
+        problem:
+          "A real estate agency tracked properties, tenants and rent collection across spreadsheets and manual follow-up, with no automated way to process rent or notify tenants.",
+        approach:
+          "I built the property and tenant management system on Next.js and Prisma, integrated Stripe to automate rent processing, and added SendGrid and Twilio for tenant and staff notifications.",
+        result:
+          "Rent collection and tenant communication running as one automated workflow instead of spreadsheets and manual follow-up calls.",
         tier: "showcase",
       },
       {
@@ -268,13 +284,13 @@ export const deepDives: DeepDive[] = [
     projectTitle: "Enterprise QA Automation & Event-Driven Platform",
     domain: "Distributed Systems",
     intro:
-      "Fifteen services, a million events a day, and the reasoning behind each decision — including what it cost.",
+      "Eleven services, a million events a day, and the reasoning behind each decision — including what it cost.",
     problem:
       "The platform executed test suites, collected telemetry and drove downstream workflows through a chain of synchronous HTTP calls. It worked at small scale and failed predictably at large: a slow runner held its caller, which held its caller, and a timeout anywhere surfaced as a red build somewhere unrelated. The job was to make execution asynchronous without making correctness optional.",
     constraints:
-      "Events had to be ordered per suite, not globally. Duplicate delivery was a certainty, not an edge case. Fifteen teams needed to deploy independently on their own schedules. And the platform had to be diagnosable by whoever was on call, not only by whoever wrote the service.",
+      "Events had to be ordered per suite, not globally. Duplicate delivery was a certainty, not an edge case. Multiple teams needed to deploy independently on their own schedules. And the platform had to be diagnosable by whoever was on call, not only by whoever wrote the service.",
     architecture:
-      "Producers — test runners, schedulers, webhooks — publish to keyed Kafka topics, so ordering holds per suite while the topic stays parallel across suites. 15+ NestJS consumer services subscribe by concern (execution, telemetry, reporting, notifications), each independently deployable. Trace context travels inside the event envelope via OpenTelemetry, so a single test run stays a single trace across every hop.",
+      "Producers — test runners, schedulers, webhooks — publish to keyed Kafka topics, so ordering holds per suite while the topic stays parallel across suites. 11 NestJS consumer services subscribe by concern (execution, telemetry, reporting, notifications), each independently deployable. Trace context travels inside the event envelope via OpenTelemetry, so a single test run stays a single trace across every hop.",
     tradeoffs: [
       {
         title: "Kafka over a task queue",
@@ -290,7 +306,7 @@ export const deepDives: DeepDive[] = [
       },
       {
         title: "Versioned event schemas as the service contract",
-        body: "Services agree on the event, not on each other's endpoints, so fifteen teams deploy on their own schedule. Changes stay additive, trading some day-to-day speed for the ability to change anything without a coordinated release.",
+        body: "Services agree on the event, not on each other's endpoints, so teams deploy on their own schedule. Changes stay additive, trading some day-to-day speed for the ability to change anything without a coordinated release.",
       },
     ],
     implementation:
@@ -298,7 +314,7 @@ export const deepDives: DeepDive[] = [
     failureModes:
       "A slow or crashed consumer stalls only its own partition, never the producer or a sibling service. Poison messages that can't succeed move to the DLQ instead of blocking a partition indefinitely. Consumer rebalances during a deploy are expected, not exceptional — offsets and idempotency mean a rebalance costs latency, not correctness. The failure mode that wasn't planned for: unbounded partition skew once one large tenant began crowding out the others.",
     scale:
-      "15+ Kafka-based NestJS services, 1M+ telemetry events processed daily, fifteen teams deploying against the same event contracts on independent schedules.",
+      "11 Kafka-based NestJS services, 1M+ telemetry events processed daily, multiple teams deploying against the same event contracts on independent schedules.",
     result:
       "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery.",
     whatIWouldChange:
@@ -367,7 +383,7 @@ export const skillGroups = [
       {
         label: "Distributed systems",
         value:
-          "Microservices · event-driven architecture · Kafka · RabbitMQ · WebRTC · retries & dead-letter queues · system design",
+          "Microservices · event-driven architecture · Kafka · RabbitMQ · WebRTC · retries & dead-letter queues · system design (HLD/LLD) · scalability",
       },
       {
         label: "Cloud platforms",
@@ -385,12 +401,13 @@ export const skillGroups = [
     rows: [
       {
         label: "Databases",
-        value: "PostgreSQL · MongoDB · Redis · OpenSearch · Supabase · Prisma · Sequelize",
+        value:
+          "PostgreSQL · MongoDB · Redis · OpenSearch · Supabase · GeoServer · Prisma · Sequelize",
       },
       {
         label: "Observability",
         value:
-          "OpenTelemetry · distributed tracing · metrics · logging · Swagger · Jest · production troubleshooting",
+          "OpenTelemetry · distributed tracing · Swagger · Jest · Sentry · Datadog · code review · Agile / Scrum",
       },
       {
         label: "Security & identity",
@@ -407,11 +424,15 @@ export const skillGroups = [
         label: "AI & developer automation",
         value: "LLMs · RAG · Model Context Protocol · Claude Code · LangChain",
       },
-      { label: "Frontend", value: "React · Next.js · Angular · Electron" },
+      { label: "Frontend", value: "React · Next.js · Angular" },
+      {
+        label: "Integrations",
+        value: "Firebase · Stripe API · SendGrid · Twilio",
+      },
       {
         label: "CI/CD & delivery",
         value:
-          "Jenkins · CI/CD pipelines · Kubernetes deployment · cloud release workflows",
+          "Jenkins · CI/CD pipelines · Git · Kubernetes deployment · cloud release workflows",
       },
     ],
   },

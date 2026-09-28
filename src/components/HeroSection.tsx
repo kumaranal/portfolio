@@ -64,7 +64,7 @@ const HeroSection = () => {
               and easy to reason about when something goes wrong.
             </p>
             <div ref={ctaRef} className="flex flex-wrap gap-3">
-              <a href={profile.resumeFile} download>
+              <a href={profile.resumeFile} target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-none border-2 border-primary bg-primary px-5 text-primary-foreground hover:bg-primary/90">
                   Download resume
                 </Button>

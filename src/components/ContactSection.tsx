@@ -77,9 +77,17 @@ const ContactSection = () => {
             </div>
           </div>
           <div className="flex min-w-0 flex-[1_1_260px] flex-wrap gap-2.5">
-            <a href={profile.resumeFile} download>
+            <a href={profile.resumeFile} target="_blank" rel="noopener noreferrer">
               <Button className="rounded-none border-2 border-transparent bg-primary-foreground justify-start text-primary hover:bg-primary-foreground/90">
                 Download resume
+              </Button>
+            </a>
+            <a href={profile.fullResumeFile} target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                className="min-w-[124px] justify-start rounded-none border-2 border-primary-foreground/65 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              >
+                Download full project experience
               </Button>
             </a>
             <Button
