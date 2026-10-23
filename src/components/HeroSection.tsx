@@ -36,6 +36,11 @@ const HeroSection = () => {
             </a>
           </div>
         </div>
+        <div className="portrait-wrap in" style={{ "--i": 2 } as CSSProperties}>
+          <div className="portrait">
+            <img src="/portrait.jpg" alt={`Portrait of ${profile.name}`} loading="eager" />
+          </div>
+        </div>
       </div>
     </section>
   );

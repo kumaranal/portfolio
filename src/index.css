@@ -215,6 +215,11 @@
 .site .h1 { font-size: clamp(2.6rem, 6.4vw, 5.6rem); line-height: 1.02; font-weight: 700; text-wrap: balance; }
 .site .hl { color: var(--accent); background-image: linear-gradient(var(--accent), var(--accent)); background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 0.07em; animation: draw 1.1s .9s cubic-bezier(.2, .8, .2, 1) both; }
 .site .sub { max-width: 560px; color: var(--muted); font-size: clamp(1.02rem, 1.5vw, 1.2rem); text-wrap: pretty; }
+.site .portrait-wrap { justify-self: end; width: 100%; max-width: 340px; }
+.site .portrait { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; transform: rotate(1.5deg); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 10px 20px -8px rgba(0, 0, 0, 0.3), 0 36px 64px -24px rgba(0, 0, 0, 0.45), 0 30px 56px -28px color-mix(in srgb, var(--accent) 45%, transparent); transition: transform .5s cubic-bezier(.2, .8, .2, 1), box-shadow .5s; }
+.site .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.site .portrait:hover { transform: rotate(0deg) translateY(-6px); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 14px 26px -8px rgba(0, 0, 0, 0.32), 0 44px 76px -24px rgba(0, 0, 0, 0.5), 0 34px 64px -26px color-mix(in srgb, var(--accent) 55%, transparent); }
+@media (max-width: 860px) { .site .portrait-wrap { justify-self: center; max-width: 280px; } }
 
 /* stats */
 .site .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
