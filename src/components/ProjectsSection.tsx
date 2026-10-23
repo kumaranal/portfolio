@@ -1,158 +1,124 @@
-import { useState } from "react";
-import { companies, deepDives, WorkItem } from "@/data/portfolio";
-import Reveal from "@/components/Reveal";
-import AnimatedCollapse from "@/components/AnimatedCollapse";
-import FlowDiagram from "@/components/FlowDiagram";
-import CaseStudyDialog from "@/components/CaseStudyDialog";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { CSSProperties } from "react";
+import { companies, WorkItem } from "@/data/portfolio";
 
-type FlatItem = WorkItem & { company: string };
+const featuredIds = ["p1", "p6", "p9"];
 
-const flatProjects: FlatItem[] = companies.flatMap((c) =>
-  c.items.map((item) => ({ ...item, company: c.name })),
+const allItems: WorkItem[] = companies.flatMap((c) => c.items);
+const featured = featuredIds
+  .map((id) => allItems.find((item) => item.id === id))
+  .filter((item): item is WorkItem => Boolean(item));
+
+const ExtLink = ({ label, href }: { label: string; href: string }) => (
+  <a className="ext" href={href} target="_blank" rel="noopener noreferrer">
+    {label}
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 17 17 7" />
+      <path d="M8 7h9v9" />
+    </svg>
+  </a>
 );
-const starProjects = flatProjects.filter((p) => p.tier === "star");
-const showcaseProjects = flatProjects.filter((p) => p.tier === "showcase");
 
-const StarCard = ({ item, delay }: { item: FlatItem; delay: number }) => {
-  const deepDive = deepDives.find((d) => d.id === item.deepDiveId);
+const ProjectVisual = ({ item }: { item: WorkItem }) => {
+  const visual = item.visual;
+  if (!visual) return null;
 
-  return (
-    <Reveal delay={delay}>
-      <Card className="flex h-full flex-col gap-4 bg-background p-5 md:p-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="primary">★ Star project</Badge>
-          <Badge>{item.domain}</Badge>
-          <span className="ml-auto text-[12.5px] text-muted-foreground">
-            {item.company}
-          </span>
+  if (visual.kind === "flow") {
+    return (
+      <div className="fh">
+        <div>
+          <div className="ecg-n disp">{visual.big}</div>
+          <div className="fh-t">{visual.caption}</div>
         </div>
-        <h3 className="font-heading text-xl font-extrabold leading-snug tracking-tight md:text-2xl">
-          {item.title}
-        </h3>
-        <p className="text-[13px] text-muted-foreground">{item.meta}</p>
-        <p className="font-heading text-[15px] font-extrabold leading-snug text-primary">
-          {item.result}
-        </p>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {item.problem}
-        </p>
-        {item.diagram && (
-          <FlowDiagram steps={item.diagram} caption={item.diagramCaption} />
-        )}
-        {deepDive && (
-          <CaseStudyDialog
-            deepDive={deepDive}
-            diagram={item.diagram}
-            diagramCaption={item.diagramCaption}
-            trigger={
-              <Button
-                type="button"
-                className="mt-auto w-fit rounded-none border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                Read full case study
-              </Button>
-            }
+        <div className="fh-flow" role="img" aria-label={`${visual.from} replaced by ${visual.to}`}>
+          <span className="fh-old">{visual.from}</span>
+          <span className="fh-line" aria-hidden="true" />
+          <span className="fh-new">{visual.to}</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (visual.kind === "ecg") {
+    return (
+      <div className="ecg-hero">
+        <svg className="ecg" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            pathLength={400}
+            d="M0 40 H60 L72 40 L80 10 L90 70 L100 28 L108 40 H170 L182 40 L190 14 L200 66 L210 30 L218 40 H280 L292 40 L300 12 L310 68 L320 28 L328 40 H400"
           />
-        )}
-      </Card>
-    </Reveal>
-  );
-};
-
-const ShowcaseCard = ({ item, delay }: { item: FlatItem; delay: number }) => {
-  const [open, setOpen] = useState(false);
+        </svg>
+        <div className="ecg-n disp">{visual.big}</div>
+        <div className="ecg-l">{visual.caption}</div>
+      </div>
+    );
+  }
 
   return (
-    <Reveal delay={delay}>
-      <Card className="flex h-full flex-col gap-3 bg-background p-4 md:p-5">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge>{item.domain}</Badge>
-          <span className="ml-auto text-[12px] text-muted-foreground">
-            {item.company}
-          </span>
+    <div className="fh">
+      <div>
+        <div className="ecg-n disp">
+          {visual.big}
+          {visual.bigUnit && <span style={{ fontSize: "0.4em" }}> {visual.bigUnit}</span>}
         </div>
-        <h3 className="font-heading text-base font-extrabold leading-snug md:text-lg">
-          {item.title}
-        </h3>
-        <p className="text-[12.5px] text-muted-foreground">{item.meta}</p>
-        <p className="font-heading text-[13.5px] font-extrabold leading-snug text-primary">
-          {item.result}
-        </p>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="mt-1 flex w-fit items-center gap-1.5 font-heading text-[12.5px] font-extrabold text-foreground transition-colors duration-150 hover:text-primary"
-        >
-          <span
-            aria-hidden="true"
-            style={{
-              display: "inline-block",
-              transform: open ? "rotate(45deg)" : "rotate(0deg)",
-              transition: "transform 200ms",
-            }}
-          >
-            +
+        <div className="fh-t">{visual.caption}</div>
+      </div>
+      <div className="fh-flow" aria-label="Event workflows the platform handles">
+        {visual.steps.map((step, i) => (
+          <span className="fh-step" key={step} style={{ "--k": i * 0.5 } as CSSProperties}>
+            {step}
           </span>
-          {open ? "Hide details" : "Problem & approach"}
-        </button>
-        <AnimatedCollapse open={open}>
-          <div className="grid gap-3 pb-1 pt-1">
-            <div>
-              <div className="mb-1 font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Problem
-              </div>
-              <p className="text-sm leading-relaxed">{item.problem}</p>
-            </div>
-            <div>
-              <div className="mb-1 font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Approach
-              </div>
-              <p className="text-sm leading-relaxed">{item.approach}</p>
-            </div>
-          </div>
-        </AnimatedCollapse>
-      </Card>
-    </Reveal>
+        ))}
+      </div>
+    </div>
   );
 };
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="border-b-2 border-border">
-      <div className="mx-auto max-w-[1320px] px-5 py-11 sm:px-8 md:py-16 lg:py-[88px]">
-        <Reveal>
-          <div className="mb-4 flex items-baseline gap-3.5">
-            {/* <span className="font-heading text-[13px] font-extrabold text-primary">04</span> */}
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight md:text-4xl">
-              Projects
-            </h2>
-          </div>
-          <p className="mb-8 max-w-[58ch] text-sm text-muted-foreground md:mb-10">
-            Eight platforms across three companies. Three star projects get the
-            full architecture write-up; the rest are one card away.
-          </p>
-        </Reveal>
+    <section id="projects" className="sec">
+      <div className="wrap">
+        <p className="mono rv">03 / Highlighted projects &amp; achievements</p>
+        <h2 className="h2 disp rv">What I built, and what it changed.</h2>
 
-        <h3 className="mb-4 font-heading text-sm font-extrabold uppercase tracking-[0.1em] text-muted-foreground">
-          Star projects
-        </h3>
-        <div className="mb-10 grid gap-4 lg:grid-cols-3 lg:gap-5 md:mb-14">
-          {starProjects.map((item, i) => (
-            <StarCard key={item.id} item={item} delay={i * 70} />
-          ))}
-        </div>
-
-        <h3 className="mb-4 font-heading text-sm font-extrabold uppercase tracking-[0.1em] text-muted-foreground">
-          More projects
-        </h3>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
-          {showcaseProjects.map((item, i) => (
-            <ShowcaseCard key={item.id} item={item} delay={i * 60} />
+        <div className="feat">
+          {featured.map((item) => (
+            <article className="card rv" key={item.id}>
+              <div className="card-top">
+                <span className="mono">{item.cardMeta}</span>
+                <span className="badge">{item.cardBadge}</span>
+              </div>
+              <ProjectVisual item={item} />
+              <h3 className="disp">{item.cardTitle ?? item.title}</h3>
+              {item.externalLink && <ExtLink label={item.externalLink.label} href={item.externalLink.href} />}
+              {item.achievement && (
+                <p className="ach">
+                  <b>Achievement</b>
+                  {item.achievement}
+                </p>
+              )}
+              {item.lead && <p className="lead">{item.lead}</p>}
+              {item.points && (
+                <ul className="pts">
+                  {item.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              )}
+              {item.tradeoff && (
+                <p className="trade">
+                  <b>Trade-off.</b> {item.tradeoff}
+                </p>
+              )}
+              {item.chips && (
+                <div className="chips">
+                  {item.chips.map((chip) => (
+                    <span className="chip" key={chip}>
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </article>
           ))}
         </div>
       </div>

@@ -1,28 +1,28 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import MetricsSection from "@/components/MetricsSection";
-import CompaniesSection from "@/components/CompaniesSection";
+import StatsSection from "@/components/StatsSection";
+import StrengthsSection from "@/components/StrengthsSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import ToolkitSection from "@/components/ToolkitSection";
+import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import CertificationsSection from "@/components/CertificationsSection";
-import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="site min-h-screen">
       <Navbar />
       <main>
         <HeroSection />
-        <MetricsSection />
-        <CompaniesSection />
+        <StatsSection />
+        <StrengthsSection />
+        <ExperienceSection />
         <ProjectsSection />
-        <ToolkitSection />
+        <SkillsSection />
         <EducationSection />
         <CertificationsSection />
-        <AboutSection />
         <ContactSection />
       </main>
       <Footer />
