@@ -1,91 +1,59 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
+import { profile } from "@/data/portfolio";
 import ScrollProgress from "@/components/ScrollProgress";
 
 const navLinks = [
-  { name: "Metrics", href: "#metrics" },
-  { name: "Companies", href: "#companies" },
-  { name: "Projects", href: "#projects" },
-  { name: "Toolkit", href: "#toolkit" },
-  { name: "Education", href: "#education" },
-  { name: "Certifications", href: "#certifications" },
   { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Experience", href: "#experience", hide: "hide-s" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills", hide: "hide-xs" },
 ];
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b-2 border-border bg-background">
-      <div className="mx-auto flex max-w-[1320px] flex-wrap items-center gap-4 px-5 py-3 sm:px-8">
-        <a href="#top" className="font-heading text-base font-extrabold tracking-tight">
-          Anal Kumar Biswas
+    <header className="nav">
+      <div className="wrap nav-in">
+        <a className="brand" href="#top" aria-label={`${profile.name}, back to top`}>
+          <span className="brand-mark" aria-hidden="true">AB</span>
+          <span>{profile.name}</span>
         </a>
-
-        <div className="hidden md:flex items-center gap-6 ml-auto">
+        <nav className="links" aria-label="Sections">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="group relative text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
+            <a key={link.name} href={link.href} className={link.hide ?? ""}>
               {link.name}
-              <span className="absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 bg-primary transition-transform duration-200 ease-out group-hover:scale-x-100" />
             </a>
           ))}
-          <Button
+          <button
+            className="theme-btn"
             type="button"
-            variant="outline"
-            size="sm"
             onClick={toggleTheme}
-            aria-label="Toggle color theme"
-            className="min-w-[104px] justify-start rounded-none border-2 text-xs font-semibold uppercase tracking-wide"
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
           >
-            {theme === "dark" ? "Light" : "Dark"} mode
-          </Button>
-        </div>
-
-        <button
-          className="md:hidden ml-auto p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+            {theme === "dark" ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+              </svg>
+            )}
+          </button>
+          <a className="btn btn-p btn-s" href={profile.resumeFile} target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3v12" />
+              <path d="m7 11 5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Resume
+          </a>
+        </nav>
       </div>
-
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t-2 border-border bg-background">
-          <div className="flex flex-col gap-1 px-5 py-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                {link.name}
-              </a>
-            ))}
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={toggleTheme}
-              className="mt-2 w-fit justify-start rounded-none border-2 text-xs font-semibold uppercase tracking-wide"
-            >
-              {theme === "dark" ? "Light" : "Dark"} mode
-            </Button>
-          </div>
-        </div>
-      )}
-
       <ScrollProgress />
-    </nav>
+    </header>
   );
 };
 

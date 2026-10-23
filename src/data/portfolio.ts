@@ -14,27 +14,55 @@ export const profile = {
   fullResumeFile: externalLinks.fullResumeUrl,
 };
 
-export const heroStats = [
-  { value: "99.9%", label: "availability held through peak live traffic" },
-  { value: "1M+", label: "events processing experience" },
-  { value: "10,000+", label: "concurrent users served at once" },
-  { value: "6", label: "years shipping to production" },
+export const topStats = [
+  {
+    label: "Live Broadcasting Platform",
+    value: "20+",
+    unit: "feeds",
+    desc: "Replaced a cable-based setup with software: 20+ camera feeds, commentary and scoreboard graphics orchestrated at 99.9% availability per match window.",
+  },
+  {
+    label: "ReadMyRhythm",
+    value: "50,000",
+    unit: "ECGs/mo",
+    desc: "Architected the platform that processes 50,000 ECGs every month, with audited cardiologist review and AI-assisted first-pass reports.",
+  },
+  {
+    label: "Golf Management Platform",
+    value: "1M+",
+    unit: "req/day",
+    desc: "Handled daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours.",
+  },
+  {
+    label: "FIAT Incentive Settlement",
+    value: "3h→40",
+    unit: "min",
+    desc: "Re-engineered the settlement batch for a system processing $50M+ in annual incentives.",
+  },
 ];
 
-export const impactMetrics = [
-  { label: "Mean time to recovery", value: 40, unit: "%" },
-  { label: "Operational latency", value: 70, unit: "%" },
-  { label: "Telecom query latency", value: 60, unit: "%" },
-  { label: "API response time", value: 25, unit: "%" },
+export const strengths = [
+  {
+    n: "01",
+    title: "Backend & API ownership",
+    body: "Production REST and GraphQL APIs, service boundaries, data models and integration flows in Python/FastAPI and Node.js with NestJS or Express.",
+  },
+  {
+    n: "02",
+    title: "Full-stack delivery",
+    body: "React and Angular interfaces built alongside the services behind them, with a practical eye on scale, caching, async processing, observability, CI/CD and cloud deployment.",
+  },
+  {
+    n: "03",
+    title: "System design",
+    body: "HLD and LLD, microservices, event-driven architecture, Kafka and Redis, database tuning and production debugging. I mentor engineers through design and code review.",
+  },
 ];
 
-export const domainBreakdown = [
-  { domain: "Distributed systems", years: 3 },
-  { domain: "Media & real-time", years: 1 },
-  { domain: "AI product engineering", years: 1.5 },
-  { domain: "Healthcare & compliance", years: 1 },
-  { domain: "Enterprise & telecom", years: 3 },
-];
+export type ProjectVisual =
+  | { kind: "flow"; big: string; caption: string; from: string; to: string }
+  | { kind: "ecg"; big: string; caption: string }
+  | { kind: "steps"; big: string; bigUnit?: string; caption: string; steps: string[] };
 
 export type WorkItem = {
   id: string;
@@ -44,16 +72,28 @@ export type WorkItem = {
   problem: string;
   approach: string;
   result: string;
+  blurb: string;
   tier: "star" | "showcase";
   diagram?: { label: string; caption: string }[];
   diagramCaption?: string;
   deepDiveId?: string;
+  cardMeta?: string;
+  cardBadge?: string;
+  cardTitle?: string;
+  visual?: ProjectVisual;
+  achievement?: string;
+  lead?: string;
+  points?: string[];
+  tradeoff?: string;
+  chips?: string[];
+  externalLink?: { label: string; href: string };
 };
 
 export type Company = {
   name: string;
   role: string;
   dates: string;
+  href?: string;
   items: WorkItem[];
 };
 
@@ -62,34 +102,60 @@ export const companies: Company[] = [
     name: "GNAPI Technologies",
     role: "Senior Software Engineer",
     dates: "July 2025 — Present",
+    href: "https://linkedin.com/company/gnapi",
     items: [
       {
         id: "p1",
         title: "AI-Based Live Broadcasting Platform",
         domain: "Media & Real-time Infrastructure",
         meta: "WebRTC · LiveKit · EKS",
+        blurb:
+          "Architected a greenfield WebRTC and LiveKit platform for the production side of live sport: cameras, commentary and scoreboard graphics, feeding YouTube Live and Discord.",
         problem:
-          "Tournament traffic broke a legacy streaming pipeline. Latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event.",
+          "A legacy, cable-based production setup broke under tournament traffic: latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event.",
         approach:
-          "I owned the architecture and the migration to a WebRTC and LiveKit media plane on Amazon EKS — horizontal scaling instead of vertical, with autoscaling tuned to the traffic curve of a live event.",
+          "I owned system architecture and the Python media orchestration services, building a greenfield WebRTC and LiveKit platform on Amazon EKS from a blank slate — a React producer console, FastAPI orchestration with LangChain automation, Redis caching, and fault-tolerant fallback paths.",
         result:
-          "10,000+ concurrent viewers, 50+ simultaneous camera feeds, 99.9% availability at peak.",
+          "20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, built from scratch by a team of 8.",
         tier: "star",
         diagram: [
-          { label: "50+ feeds", caption: "venue ingest" },
+          { label: "20+ feeds", caption: "venue ingest" },
           { label: "LiveKit SFU", caption: "WebRTC forwarding" },
-          { label: "EKS node pool", caption: "HPA on event curve" },
-          { label: "10k viewers", caption: "sub-second fan-out" },
+          { label: "EKS node pool", caption: "HPA + bare-metal GPU" },
+          { label: "YouTube / Discord", caption: "distribution" },
         ],
         diagramCaption:
           "Scaling happens at the node pool, so an unexpected audience costs capacity, not uptime.",
         deepDiveId: "p1",
+        cardMeta: "GNAPI · 2025 – Now",
+        cardBadge: "Built from scratch · Team of 8",
+        visual: {
+          kind: "flow",
+          big: "20+",
+          caption: "live camera feeds, plus commentary feeds, run entirely from software",
+          from: "Cable-based setup",
+          to: "Software-defined production",
+        },
+        achievement:
+          "Replaced a traditional cable-based production setup with software. Built from a blank slate, it handles 20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, and distributes to YouTube Live and Discord.",
+        lead:
+          "A high-throughput, low-latency platform focused on the production side of broadcasting. Viewer-facing distribution and playback stay on the platforms audiences already use. I owned system architecture and the Python media orchestration services.",
+        points: [
+          "Defined APIs, data models and service boundaries for real-time media workflows.",
+          "React producer console plus FastAPI orchestration with LangChain automation, Redis caching and fault-tolerant fallback paths.",
+          "Amazon EKS with Horizontal Pod Autoscaling and bare-metal GPU nodes.",
+        ],
+        tradeoff:
+          "Chose a LiveKit SFU over peer-to-peer so publisher bandwidth stays flat as more subscribers join, and server-side transcoding and recording become possible.",
+        chips: ["React", "TypeScript", "FastAPI", "WebRTC", "LiveKit", "LangChain", "Redis", "PostgreSQL", "Docker", "Kubernetes", "Helm", "Terraform", "AWS EKS"],
       },
       {
         id: "p2",
         title: "Enterprise QA Automation & Event-Driven Platform",
         domain: "Distributed Systems",
         meta: "Kafka · NestJS · 11 services",
+        blurb:
+          "Split a monolithic test runner into 11 NestJS microservices over Kafka and cut production MTTR by 40% across ~1M daily events.",
         problem:
           "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
         approach:
@@ -112,6 +178,8 @@ export const companies: Company[] = [
         title: "Electrical Instrumentation System (IQGeo)",
         domain: "GIS & Spatial Data",
         meta: "FastAPI · GeoServer · MongoDB",
+        blurb:
+          "Spatial asset management for electrical infrastructure with FastAPI, React, GeoServer and MongoDB.",
         problem:
           "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
         approach:
@@ -126,25 +194,49 @@ export const companies: Company[] = [
     name: "Xotiv Technologies",
     role: "Full Stack Developer",
     dates: "December 2023 — June 2025",
+    href: "https://xotiv.com",
     items: [
       {
         id: "p9",
         title: "Golf Course & Tournament Management Platform",
         domain: "Multi-tenant SaaS",
         meta: "Angular · Node.js · GraphQL",
+        blurb:
+          "Owned API architecture and the AWS migration for a multi-tenant product, taking release time from 45 to 10 minutes.",
         problem:
           "Clubs ran tee-time bookings, memberships, handicaps and tournament draws on spreadsheets, and the business wanted one product it could sell to many clubs rather than build per-client.",
         approach:
           "I architected the Angular portals and Node.js/Express APIs over PostgreSQL as a single multi-tenant codebase, added GraphQL for the club dashboards — each needing a different slice of the same tee-sheet and scoring data — and moved the stack onto AWS ECS with Jenkins CI/CD.",
         result:
-          "Live leaderboards and real-time scorecard reconciliation for every client club, with release time cut from 45 to 10 minutes.",
-        tier: "showcase",
+          "1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours, with release time cut from 45 to 10 minutes.",
+        tier: "star",
+        deepDiveId: undefined,
+        cardMeta: "Xotiv · 2023 – 2025",
+        cardBadge: "Team of 6 · API + AWS migration",
+        visual: {
+          kind: "steps",
+          big: "1M+",
+          bigUnit: "req/day",
+          caption: "daily operational requests and real-time sensor and dispatch syncs, at 99.95% uptime across peak facility hours",
+          steps: ["Sensor sync", "Dispatch sync", "Live leaderboards", "Scorecard reconciliation"],
+        },
+        externalLink: { label: "Visit Turf Assistant", href: "https://app.turfassistant.com/" },
+        achievement:
+          "Seamlessly handled 1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours and big tournament events, serving several clubs from one multi-tenant codebase. Cut release time from 45 to 10 minutes by moving to AWS ECS with Jenkins CI/CD.",
+        lead:
+          "Operations software for golf facilities: course management, tournaments, memberships and tee-time reservations. I owned the API architecture and the AWS migration.",
+        points: [
+          "Draw generation, live leaderboards and real-time scorecard reconciliation.",
+          "GraphQL where club dashboards need different slices of shared data; REST kept for webhooks and third-party integrations.",
+        ],
+        chips: ["Angular", "Node.js", "Express", "GraphQL", "PostgreSQL", "Sequelize", "Redis", "AWS ECS", "Jenkins"],
       },
       {
         id: "p5",
         title: "DEVEBOL — AI Sports Club Management Platform",
         domain: "AI Product Engineering",
         meta: "Next.js · Prisma · LangChain",
+        blurb: "A sports club platform with AI features.",
         problem:
           "Sports clubs ran rosters, schedules and member communication by hand, with no AI assistance and no reliable way to reach members in real time.",
         approach:
@@ -158,6 +250,7 @@ export const companies: Company[] = [
         title: "AFFCO — Property & Tenant Management SaaS",
         domain: "PropTech",
         meta: "Next.js · Prisma · Stripe",
+        blurb: "A property management SaaS with automated rent processing.",
         problem:
           "A real estate agency tracked properties, tenants and rent collection across spreadsheets and manual follow-up, with no automated way to process rent or notify tenants.",
         approach:
@@ -171,22 +264,32 @@ export const companies: Company[] = [
         title: "ReadMyRhythm — Healthcare Telemedicine Platform",
         domain: "Healthcare & Compliance",
         meta: "TrueVault · Supabase · Stripe",
+        blurb:
+          "Owned system architecture for a clinician platform with AI-assisted first-pass reports, audited document access and Stripe reconciliation.",
         problem:
           "Institutional EKG review puts protected health data, third-party payments and an unforgiving compliance surface in one system.",
         approach:
           "I drew the data boundaries first — PHI isolated in TrueVault, application state in Supabase, neither crossing over — then automated Stripe reconciliation so the finance trail was a job, not a person.",
         result:
-          "10,000+ monthly medical transactions reconciled automatically, zero reported compliance breaches.",
+          "50,000 ECGs processed every month, 10,000+ monthly medical transactions reconciled automatically, zero reported compliance breaches.",
         tier: "star",
-        diagram: [
-          { label: "PHI record", caption: "isolated in TrueVault" },
-          { label: "App state", caption: "accounts, scheduling — Supabase" },
-          { label: "Stripe payment", caption: "capture on schedule" },
-          { label: "Reconciliation job", caption: "matched, or flagged" },
-        ],
-        diagramCaption:
-          "PHI and application state never share a table — the two stores are bridged by reference, not replication.",
         deepDiveId: "p6",
+        cardMeta: "Xotiv · 2023 – 2025",
+        cardBadge: "Team of 4 · Architecture",
+        cardTitle: "ReadMyRhythm",
+        visual: { kind: "ecg", big: "50,000", caption: "ECGs processed every month" },
+        externalLink: { label: "Visit readmyrhythm.com", href: "https://readmyrhythm.com/" },
+        achievement:
+          "Architected a platform that processes 50,000 ECGs every month, replacing email-based exchange of cardiac data with a secure, audited workflow and adding AI-assisted first-pass reports that cardiologists review and sign.",
+        lead:
+          "Telemedicine and EKG review: wearable and uploaded diagnostic data reaches cardiologists through a compliant, clinician-facing platform.",
+        points: [
+          "Next.js clinician platform with FastAPI EKG file parsing and a RAG-based drafting workflow built on LangChain.",
+          "OAuth 2.0 / OIDC with TrueVault, Supabase and short-lived signed URLs.",
+          "Automated reconciliation of ~10,000 monthly institutional Stripe transactions.",
+          "Deployed on AWS ECS in private subnets.",
+        ],
+        chips: ["Next.js", "FastAPI", "LangChain", "Supabase", "TrueVault", "Stripe", "AWS ECS"],
       },
     ],
   },
@@ -194,18 +297,21 @@ export const companies: Company[] = [
     name: "Tata Consultancy Services",
     role: "Software Analyst",
     dates: "November 2020 — November 2023",
+    href: "https://www.tcs.com",
     items: [
       {
         id: "p7",
         title: "Incentive Management System — FIAT",
         domain: "Enterprise & FinTech",
         meta: "Java · Spring Boot · Jenkins",
+        blurb:
+          "Wrote the low-level designs for settlement services and brought a 3-hour batch down to 40 minutes.",
         problem:
           "Dealer incentives and commissions were calculated across configurable sales rules where a rounding error is a financial defect.",
         approach:
           "Java and Spring Boot microservices for incentive and commission workflows, dynamic sales configuration, and Jenkins CI/CD on AWS — plus the production support that came with it.",
         result:
-          "Processing and reconciliation of more than $50M in annual dealer incentives.",
+          "Settlement batch brought from 3 hours to 40 minutes, processing and reconciliation of more than $50M in annual dealer incentives.",
         tier: "showcase",
       },
       {
@@ -213,6 +319,8 @@ export const companies: Company[] = [
         title: "Optical Fiber Management System — Comcast",
         domain: "Telecom Infrastructure",
         meta: "Express.js · Angular · MongoDB",
+        blurb:
+          "Owned topology APIs and the dashboard query layer; reworked MongoDB aggregations from repeated 30-second timeouts to about 2 seconds.",
         problem:
           "Engineers monitoring optical fiber infrastructure were waiting on queries over high-volume telecom data during maintenance windows.",
         approach:
@@ -251,9 +359,9 @@ export const deepDives: DeepDive[] = [
     problem:
       "The legacy streaming pipeline broke under tournament traffic: latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event because the old architecture scaled vertically and reactively.",
     constraints:
-      "Sub-second latency had to hold for 50+ simultaneous camera feeds while an audience could grow from hundreds to 10,000+ viewers within minutes of kickoff. Vertical scaling was ruled out — a single point of failure isn't acceptable on a live broadcast. And the migration itself had to happen without an outage during an active tournament.",
+      "Sub-second latency had to hold for 20+ simultaneous camera feeds while an audience could grow quickly within minutes of kickoff. Vertical scaling was ruled out — a single point of failure isn't acceptable on a live broadcast. And the migration itself had to happen without an outage during an active tournament.",
     architecture:
-      "A WebRTC and LiveKit media plane replaced the legacy pipeline, deployed on Amazon EKS. Camera feeds ingest through LiveKit's SFU (selective forwarding unit), which forwards media to viewers without re-encoding every stream on a single server — fan-out to 10,000+ viewers happens across the media plane, not through a central bottleneck. The Kubernetes node pool scales horizontally against the traffic curve of the event itself, not a daily average.",
+      "A WebRTC and LiveKit media plane replaced the legacy pipeline, deployed on Amazon EKS. Camera feeds ingest through LiveKit's SFU (selective forwarding unit), which forwards media to viewers without re-encoding every stream on a single server. The Kubernetes node pool scales horizontally against the traffic curve of the event itself, not a daily average, with bare-metal GPU nodes handling the heavier media work.",
     tradeoffs: [
       {
         title: "Horizontal over vertical scaling",
@@ -269,13 +377,13 @@ export const deepDives: DeepDive[] = [
       },
     ],
     implementation:
-      "Feeds from 50+ venue cameras ingest concurrently into the LiveKit SFU running on EKS. Horizontal pod autoscaling is tuned against the shape of a live event — a slow ramp before kickoff, a sharp spike at kickoff, a plateau through play — so new capacity lands ahead of the audience rather than behind it.",
+      "Feeds from 20+ venue cameras ingest concurrently into the LiveKit SFU running on EKS, alongside commentary feeds and real-time scoreboard graphics, with the finished production distributed to YouTube Live and Discord. Horizontal pod autoscaling is tuned against the shape of a live event — a slow ramp before kickoff, a sharp spike at kickoff, a plateau through play — so new capacity lands ahead of the audience rather than behind it.",
     failureModes:
       "A node failing mid-match had to cost a reconnect, not a dropped broadcast — the media plane is stateless enough that a viewer's connection re-establishes against a healthy node without losing the stream. The traffic pattern that actually threatens the system isn't gradual growth, it's the vertical jump at kickoff, so scaling is tuned ahead of the known shape of a tournament schedule rather than purely reactive to current load.",
     scale:
-      "50+ simultaneous camera feeds, 10,000+ concurrent viewers, 99.9% availability sustained through peak tournament traffic.",
+      "20+ simultaneous camera feeds plus commentary feeds, 99.9% availability sustained per match window, built from scratch by a team of 8.",
     result:
-      "10,000+ concurrent viewers and 50+ simultaneous camera feeds served at 99.9% availability at peak — on the same traffic that used to drop feeds and cap latency guesses days in advance.",
+      "20+ camera feeds, live commentary and real-time scoreboard graphics served from one platform at 99.9% availability per match window — on infrastructure that used to drop feeds and cap latency guesses days in advance.",
     whatIWouldChange:
       "Load-test the exact shape of a kickoff spike earlier. The autoscaling policy was tuned against production data from the first tournament on the new platform, which meant that first live event carried more risk than every one since.",
   },
@@ -351,106 +459,76 @@ export const deepDives: DeepDive[] = [
     failureModes:
       "A reconciliation mismatch fails loud, not silent — it raises a flag rather than resolving itself, because a self-healing financial job is exactly the kind of thing that hides a real defect. On the PHI side, the failure mode being defended against isn't a system crash, it's a boundary getting blurred by a well-intentioned shortcut in a future feature — which is why the separation is structural, two systems, rather than a permissions rule inside one.",
     scale:
-      "10,000+ monthly medical transactions reconciled automatically, across an ongoing telemedicine caseload.",
+      "50,000 ECGs processed every month, 10,000+ monthly medical transactions reconciled automatically, across an ongoing telemedicine caseload.",
     result:
-      "10,000+ monthly medical transactions reconciled automatically, zero reported compliance breaches.",
+      "50,000 ECGs processed every month and 10,000+ monthly medical transactions reconciled automatically, zero reported compliance breaches.",
     whatIWouldChange:
       "Build the reconciliation mismatch alerting in from day one rather than after the first manual catch. It existed within weeks, but there was a window where a mismatch would have been caught by a person, not a system.",
   },
 ];
 
 export const skillGroups = [
+  { title: "Languages", items: ["Python", "TypeScript", "JavaScript (ES6+)", "SQL", "Java", "C++"] },
+  { title: "Frontend", items: ["React.js", "Next.js", "Angular", "HTML5", "CSS3", "GraphQL"] },
   {
-    id: "a",
-    label: "Languages & backend",
-    rows: [
-      { label: "Languages", value: "Python · Java · JavaScript · TypeScript · C++ · SQL" },
-      {
-        label: "Backend frameworks",
-        value: "FastAPI · NestJS · Node.js · Express.js · Spring Boot",
-      },
-      {
-        label: "API & service design",
-        value:
-          "REST APIs · GraphQL · service contracts · asynchronous processing · idempotency",
-      },
+    title: "Backend & architecture",
+    items: [
+      "FastAPI",
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "Spring Boot",
+      "REST",
+      "GraphQL",
+      "OAuth 2.0 / OIDC",
+      "Microservices",
+      "Event-driven",
+      "Kafka",
+      "RabbitMQ",
+      "WebRTC",
+      "MCP",
+      "System design",
+      "HLD / LLD",
     ],
   },
   {
-    id: "b",
-    label: "Distributed & cloud",
-    rows: [
-      {
-        label: "Distributed systems",
-        value:
-          "Microservices · event-driven architecture · Kafka · RabbitMQ · WebRTC · retries & dead-letter queues · system design (HLD/LLD) · scalability",
-      },
-      {
-        label: "Cloud platforms",
-        value: "AWS (EKS, EC2, ECS, S3, Lambda) · Google Cloud Platform",
-      },
-      {
-        label: "Containers & infrastructure",
-        value: "Kubernetes · Docker · Helm · Terraform · infrastructure as code",
-      },
-    ],
+    title: "Cloud & DevOps",
+    items: ["AWS (EKS, ECS, EC2, S3, Lambda)", "GCP", "Kubernetes", "Docker", "Helm", "Terraform", "Jenkins", "CI/CD", "Git", "Microsoft Entra ID"],
   },
   {
-    id: "c",
-    label: "Data & reliability",
-    rows: [
-      {
-        label: "Databases",
-        value:
-          "PostgreSQL · MongoDB · Redis · OpenSearch · Supabase · GeoServer · Prisma · Sequelize",
-      },
-      {
-        label: "Observability",
-        value:
-          "OpenTelemetry · distributed tracing · Swagger · Jest · Sentry · Datadog · code review · Agile / Scrum",
-      },
-      {
-        label: "Security & identity",
-        value:
-          "Keycloak · OAuth 2.0 · OpenID Connect · RBAC · Microsoft Entra ID · single sign-on",
-      },
-    ],
+    title: "Data & AI",
+    items: ["PostgreSQL", "MongoDB", "Redis", "OpenSearch", "Supabase", "GeoServer", "Prisma", "Sequelize", "LLMs", "RAG", "LangChain"],
   },
   {
-    id: "d",
-    label: "AI, frontend & delivery",
-    rows: [
-      {
-        label: "AI & developer automation",
-        value: "LLMs · RAG · Model Context Protocol · Claude Code · LangChain",
-      },
-      { label: "Frontend", value: "React · Next.js · Angular" },
-      {
-        label: "Integrations",
-        value: "Firebase · Stripe API · SendGrid · Twilio",
-      },
-      {
-        label: "CI/CD & delivery",
-        value:
-          "Jenkins · CI/CD pipelines · Git · Kubernetes deployment · cloud release workflows",
-      },
-    ],
+    title: "Integrations & quality",
+    items: ["Stripe", "Firebase", "Twilio", "SendGrid", "OpenTelemetry", "Distributed tracing", "Swagger", "Jest", "Sentry", "Datadog", "Code review", "Agile / Scrum"],
   },
 ];
 
+export const marquee = [
+  "Python",
+  "FastAPI",
+  "Node.js",
+  "NestJS",
+  "TypeScript",
+  "React",
+  "Angular",
+  "Kafka",
+  "WebRTC",
+  "PostgreSQL",
+  "Redis",
+  "AWS",
+  "Kubernetes",
+  "Terraform",
+];
+
 export const about = {
-  note: "Came to software from electrical engineering — six years on, still drawn to systems whose behaviour you can reason about.",
-  paragraphs: [
-    "I came to software from electrical engineering, drawn to systems whose behaviour you can reason about. Six years later that is still the appeal — only the systems are distributed now, and a good deal larger.",
-    "I do my best work where accuracy matters and the traffic is real: live broadcast, healthcare data, financial reconciliation, telecom infrastructure. I enjoy the review conversation, I am candid about the cost of my own decisions, and I would rather deliver something smaller that holds than something larger that wobbles.",
-  ],
   education: {
     degree: "B.Tech, Electrical Engineering",
     institution: "Academy of Technology (West Bengal University of Technology)",
     years: "2016 — 2020 · CGPA 8.1",
     location: "India · UTC+5:30",
   },
-  basesd: {},
 };
 
 export type Certification = {
