@@ -1,14 +1,14 @@
 import { externalLinks } from "@/config/links";
 
 export const profile = {
-  name: "Anal Kumar Biswas",
+  name: "ANAL KUMAR BISWAS",
   role: "Senior Software Engineer",
   location: "Kolkata, India · Open to relocation",
   email: "kumaranal.official@gmail.com",
   phone: "+91 70030 80703",
   phoneHref: "tel:+917003080703",
   linkedin: "https://www.linkedin.com/in/anal-kumar-biswas-733488356/",
-  linkedinLabel: "anal-kumar-biswas-733488356",
+  linkedinLabel: "linkedin.com/in/anal-kumar-biswas-733488356",
   website: "https://analkumarbiswas.com",
   resumeFile: externalLinks.resumeUrl,
   fullResumeFile: externalLinks.fullResumeUrl,
@@ -112,7 +112,7 @@ export const companies: Company[] = [
     items: [
       {
         id: "p1",
-        title: "AI-Based Live Broadcasting Platform",
+        title: "Live Broadcasting Platform",
         domain: "Media & Real-time Infrastructure",
         meta: "WebRTC · LiveKit · EKS",
         blurb:
@@ -120,7 +120,7 @@ export const companies: Company[] = [
         problem:
           "A legacy, cable-based production setup broke under tournament traffic: latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event.",
         approach:
-          "I owned system architecture and the Python media orchestration services, building a greenfield WebRTC and LiveKit platform on Amazon EKS from a blank slate — a React producer console, FastAPI orchestration with LangChain automation, Redis caching, and fault-tolerant fallback paths.",
+          "I owned system architecture and the Python media orchestration services, building a greenfield WebRTC and LiveKit platform on Amazon EKS from a blank slate — a React producer console, FastAPI orchestration with Redis caching, fault-tolerant fallback paths, and LangChain-based automation for production workflows.",
         result:
           "20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, built from scratch by a team of 8.",
         tier: "star",
@@ -148,7 +148,7 @@ export const companies: Company[] = [
         lead: "A high-throughput, low-latency platform focused on the production side of broadcasting. Viewer-facing distribution and playback stay on the platforms audiences already use. I owned system architecture and the Python media orchestration services.",
         points: [
           "Defined APIs, data models and service boundaries for real-time media workflows.",
-          "React producer console plus FastAPI orchestration with LangChain automation, Redis caching and fault-tolerant fallback paths.",
+          "React producer console plus FastAPI orchestration with Redis caching, LangChain-based production automation and fault-tolerant fallback paths.",
           "Amazon EKS with Horizontal Pod Autoscaling and bare-metal GPU nodes.",
         ],
         tradeoff:
@@ -171,7 +171,7 @@ export const companies: Company[] = [
       },
       {
         id: "p3",
-        title: "Electrical Instrumentation System (IQGeo)",
+        title: "AI-Assisted Electrical Instrumentation System (IQGeo)",
         domain: "GIS & Spatial Data",
         meta: "FastAPI · GeoServer · MongoDB",
         blurb:
@@ -179,14 +179,14 @@ export const companies: Company[] = [
         problem:
           "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
         approach:
-          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, deployed on AWS with Jenkins.",
+          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, while building a LangChain-based automation workflow for planning network installation and maintenance, deployed on AWS with Jenkins.",
         result:
           "A single interactive system for tracking and maintaining electrical infrastructure assets, replacing scattered records with one spatial view.",
         tier: "showcase",
       },
       {
         id: "p2",
-        title: "Enterprise QA Automation & Event-Driven Platform",
+        title: "AI-Assisted Enterprise QA Automation & Event-Driven Platform",
         domain: "Distributed Systems",
         meta: "Kafka · NestJS · 11 services",
         blurb:
@@ -218,7 +218,7 @@ export const companies: Company[] = [
     items: [
       {
         id: "p9",
-        title: "Golf Course & Tournament Management Platform",
+        title: "AI-Assisted Golf Course & Tournament Management Platform",
         domain: "Multi-tenant SaaS",
         meta: "Angular · Node.js · GraphQL",
         blurb:
@@ -226,7 +226,7 @@ export const companies: Company[] = [
         problem:
           "Clubs ran tee-time bookings, memberships, handicaps and tournament draws on spreadsheets, and the business wanted one product it could sell to many clubs rather than build per-client.",
         approach:
-          "I architected the Angular portals and Node.js/Express APIs over PostgreSQL as a single multi-tenant codebase, added GraphQL for the club dashboards — each needing a different slice of the same tee-sheet and scoring data — and moved the stack onto AWS ECS with Jenkins CI/CD.",
+          "I architected the Angular portals and Node.js/Express APIs over PostgreSQL as a single multi-tenant codebase, added GraphQL for the club dashboards — each needing a different slice of the same tee-sheet and scoring data — and built a LangChain-based automation system for planning sport hardware installation and maintenance while moving the stack onto AWS ECS with Jenkins CI/CD.",
         result:
           "1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours, with release time cut from 45 to 10 minutes.",
         tier: "star",
@@ -271,7 +271,7 @@ export const companies: Company[] = [
       },
       {
         id: "p5",
-        title: "DEVEBOL — AI Sports Club Management Platform",
+        title: "DEVEBOL — AI-Assisted Sports Club Management Platform",
         domain: "AI Product Engineering",
         meta: "Next.js · Prisma · LangChain",
         blurb: "A sports club platform with AI features.",
@@ -299,7 +299,7 @@ export const companies: Company[] = [
       },
       {
         id: "p6",
-        title: "ReadMyRhythm — Healthcare Telemedicine Platform",
+        title: "AI-Assisted ReadMyRhythm — Healthcare Telemedicine Platform",
         domain: "Healthcare & Compliance",
         meta: "TrueVault · Supabase · Stripe",
         blurb:
@@ -314,7 +314,7 @@ export const companies: Company[] = [
         deepDiveId: "p6",
         cardMeta: "Xotiv · 2023 – 2025",
         cardBadge: "Team of 4 · Architecture",
-        cardTitle: "ReadMyRhythm",
+        cardTitle: "AI-Assisted ReadMyRhythm",
         visual: {
           kind: "ecg",
           big: "50,000",
@@ -482,7 +482,7 @@ export const deepDives: DeepDive[] = [
   },
   {
     id: "p6",
-    projectTitle: "ReadMyRhythm — Healthcare Telemedicine Platform",
+    projectTitle: "AI-Assisted ReadMyRhythm — Healthcare Telemedicine Platform",
     domain: "Healthcare & Compliance",
     intro:
       "Protected health data, real payments and a compliance surface that doesn't forgive a shortcut, in one system.",
