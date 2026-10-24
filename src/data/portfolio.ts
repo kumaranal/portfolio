@@ -2,9 +2,11 @@ import { externalLinks } from "@/config/links";
 
 export const profile = {
   name: "ANAL KUMAR BISWAS",
-  role: "Senior Software Engineer",
+  role: "Senior Software Engineer ",
   location: "Kolkata, India · Open to relocation",
   email: "kumaranal.official@gmail.com",
+  phone: "+91 7003080703",
+  phoneHref: "tel:+917003080703",
   whatsappHref: "https://wa.me/917003080703",
   linkedin: "https://www.linkedin.com/in/anal-kumar-biswas-733488356/",
   linkedinLabel: "linkedin.com/in/anal-kumar-biswas-733488356",
@@ -21,16 +23,16 @@ export const topStats = [
     desc: "Replaced a cable-based setup with software: 20+ camera feeds, commentary and scoreboard graphics orchestrated at 99.9% availability per match window.",
   },
   {
-    label: "ReadMyRhythm",
-    value: "50,000",
-    unit: "ECGs/mo",
-    desc: "Architected the platform that processes 50,000 ECGs every month, with audited cardiologist review and AI-assisted first-pass reports.",
+    label: "IQGeo Electrical Assets",
+    value: "100k+",
+    unit: "assets",
+    desc: "Built a spatial asset management platform with real-time mapping for more than 100,000 electrical grid assets.",
   },
   {
-    label: "Golf Management Platform",
+    label: "Turf Assistant",
     value: "1M+",
     unit: "req/day",
-    desc: "Handled daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours.",
+    desc: "Handled daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours.",
   },
   {
     label: "FIAT Incentive Settlement",
@@ -44,17 +46,17 @@ export const strengths = [
   {
     n: "01",
     title: "Backend & API ownership",
-    body: "Production REST and GraphQL APIs, service boundaries, data models and integration flows in Python/FastAPI and Node.js with NestJS or Express.",
+    body: "Design and implement production REST/GraphQL APIs, service boundaries, data models and integration flows using Python/FastAPI and Node.js/NestJS/Express.js.",
   },
   {
     n: "02",
     title: "Full-stack delivery",
-    body: "React and Angular interfaces built alongside the services behind them, with a practical eye on scale, caching, async processing, observability, CI/CD and cloud deployment.",
+    body: "Build React and Angular interfaces alongside backend services, with a practical focus on scalability, caching, async processing, observability, CI/CD and cloud deployment.",
   },
   {
     n: "03",
     title: "System design",
-    body: "HLD and LLD, microservices, event-driven architecture, Kafka and Redis, database tuning and production debugging. I mentor engineers through design and code review.",
+    body: "Work across HLD/LLD, microservices, event-driven architecture, Kafka, Redis, database optimization and production debugging; mentor through design and code review.",
   },
 ];
 
@@ -104,7 +106,7 @@ export type Company = {
 
 export const companies: Company[] = [
   {
-    name: "GNAPI Technologies",
+    name: "GNAPI Technologies Pvt. Ltd.",
     role: "Senior Software Engineer",
     dates: "July 2025 — Present",
     href: "https://linkedin.com/company/gnapi",
@@ -113,52 +115,54 @@ export const companies: Company[] = [
         id: "p1",
         title: "Live Broadcasting Platform",
         domain: "Media & Real-time Infrastructure",
-        meta: "WebRTC · LiveKit · EKS",
+        meta: "Python · FastAPI · WebRTC · LiveKit",
         blurb:
           "Architected a greenfield WebRTC and LiveKit platform for the production side of live sport: cameras, commentary and scoreboard graphics, feeding YouTube Live and Discord.",
         problem:
           "A legacy, cable-based production setup broke under tournament traffic: latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event.",
         approach:
-          "I owned system architecture and the Python media orchestration services, building a greenfield WebRTC and LiveKit platform on Amazon EKS from a blank slate — a React producer console, FastAPI orchestration with Redis caching, fault-tolerant fallback paths, and LangChain-based automation for production workflows.",
+          "I owned system architecture and Python media orchestration, building a greenfield WebRTC and LiveKit platform with a React producer console, FastAPI orchestration, Redis caching and fault-tolerant fallback paths. The platform integrates with YouTube Live and Discord for distribution.",
         result:
           "20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, built from scratch by a team of 8.",
         tier: "star",
         diagram: [
           { label: "20+ feeds", caption: "venue ingest" },
           { label: "LiveKit SFU", caption: "WebRTC forwarding" },
-          { label: "EKS node pool", caption: "HPA + bare-metal GPU" },
+          {
+            label: "Production workflows",
+            caption: "orchestration + graphics",
+          },
           { label: "YouTube / Discord", caption: "distribution" },
         ],
         diagramCaption:
-          "Scaling happens at the node pool, so an unexpected audience costs capacity, not uptime.",
+          "Software orchestration connects venue feeds and production workflows to distribution platforms.",
         deepDiveId: "p1",
-        cardMeta: "GNAPI · 2025 – Now",
+        cardMeta: "GNAPI · 2025 – Present",
         cardBadge: "Built from scratch · Team of 8",
         visual: {
           kind: "flow",
           big: "20+",
           caption:
-            "live camera feeds, plus commentary feeds, run entirely from software",
+            "camera feeds orchestrated with commentary and scoreboard graphics",
           from: "Cable-based setup",
           to: "Software-defined production",
         },
         achievement:
-          "Replaced a traditional cable-based production setup with software. Built from a blank slate, it handles 20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, and distributes to YouTube Live and Discord.",
-        lead: "A high-throughput, low-latency platform focused on the production side of broadcasting. Viewer-facing distribution and playback stay on the platforms audiences already use. I owned system architecture and the Python media orchestration services.",
+          "Architected a greenfield WebRTC and LiveKit platform replacing cable-based production setups. It orchestrates 20+ camera feeds, live commentary and real-time scoreboard graphics at 99.9% availability per match window, with distribution to YouTube Live and Discord.",
+        lead: "A high-throughput, low-latency production platform for multi-camera broadcasting. I owned system architecture and Python media orchestration services as part of a team of 8.",
         points: [
           "Defined APIs, data models and service boundaries for real-time media workflows.",
-          "React producer console plus FastAPI orchestration with Redis caching, LangChain-based production automation and fault-tolerant fallback paths.",
-          "Amazon EKS with Horizontal Pod Autoscaling and bare-metal GPU nodes.",
+          "Built a React producer console and FastAPI orchestration with Redis caching and fault-tolerant fallback paths.",
+          "Integrated third-party distribution to YouTube Live and Discord.",
         ],
         tradeoff:
-          "Chose a LiveKit SFU over peer-to-peer so publisher bandwidth stays flat as more subscribers join, and server-side transcoding and recording become possible.",
+          "Designed the production platform around software orchestration while retaining third-party platforms for viewer-facing distribution and playback.",
         chips: [
           "React",
           "TypeScript",
           "FastAPI",
           "WebRTC",
           "LiveKit",
-          "LangChain",
           "Redis",
           "PostgreSQL",
           "Docker",
@@ -166,83 +170,77 @@ export const companies: Company[] = [
           "Helm",
           "Terraform",
           "AWS EKS",
+          "S3",
+          "Jenkins",
         ],
       },
       {
         id: "p3",
         title: "AI-Assisted Electrical Instrumentation System (IQGeo)",
         domain: "GIS & Spatial Data",
-        meta: "FastAPI · GeoServer · MongoDB",
+        meta: "Python · FastAPI · GeoServer · MongoDB",
         blurb:
-          "Spatial asset management for electrical infrastructure with FastAPI, React, GeoServer and MongoDB.",
+          "Built spatial asset management backends and React interfaces enabling real-time mapping for 100,000+ electrical grid assets.",
         problem:
-          "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
+          "Build a robust spatial asset management platform for IQGeo to monitor, maintain and map critical electrical infrastructure in real time.",
         approach:
-          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, while building a LangChain-based automation workflow for planning network installation and maintenance, deployed on AWS with Jenkins.",
+          "Designed asset-management backends in Python FastAPI and React, integrated GeoServer with MongoDB for dynamic spatial layers, and built a LangChain RAG system for network installation planning. Automated AWS infrastructure and Jenkins CI/CD.",
         result:
-          "A single interactive system for tracking and maintaining electrical infrastructure assets, replacing scattered records with one spatial view.",
+          "Enabled real-time mapping for 100,000+ grid assets, reduced map load latency by 40%, and cut network installation planning effort by 50%.",
         tier: "showcase",
-      },
-      {
-        id: "p2",
-        title: "AI-Assisted Enterprise QA Automation & Event-Driven Platform",
-        domain: "Distributed Systems",
-        meta: "Kafka · NestJS · 11 services",
-        blurb:
-          "Split a monolithic test runner into 11 NestJS microservices over Kafka and cut production MTTR by 40% across ~1M daily events.",
-        problem:
-          "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
-        approach:
-          "I decomposed the monolithic runner into 11 Kafka-based NestJS microservices: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I integrated Keycloak for OAuth 2.0/OIDC single sign-on, automated bug tracking and Jira ticketing workflows, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
-        result:
-          "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery.",
-        tier: "star",
-        diagram: [
-          { label: "Producers", caption: "runners, schedulers" },
-          { label: "Kafka topics", caption: "keyed, replayable" },
-          { label: "11 consumers", caption: "idempotent, retry + DLQ" },
-          { label: "Telemetry store", caption: "1M events / day" },
+        chips: [
+          "React",
+          "JavaScript",
+          "Python",
+          "FastAPI",
+          "Pyramid",
+          "GeoServer",
+          "MongoDB",
+          "AWS",
+          "Docker",
+          "Jenkins",
+          "LangChain",
+          "RAG",
+          "Terraform",
+          "Kubernetes",
         ],
-        diagramCaption:
-          "Ordering and replay come from the topic; correctness under retry comes from the consumer.",
-        deepDiveId: "p2",
       },
     ],
   },
   {
-    name: "Xotiv Technologies",
+    name: "Xotiv Technologies Pvt. Ltd.",
     role: "Full Stack Developer",
     dates: "December 2023 — June 2025",
     href: "https://xotiv.com",
     items: [
       {
         id: "p9",
-        title: "AI-Assisted Golf Course & Tournament Management Platform",
+        title: "Turf Assistant — Sports & Golf Facility Management Platform",
         domain: "Multi-tenant SaaS",
-        meta: "Angular · Node.js · GraphQL",
+        meta: "Angular · TypeScript · Node.js · GraphQL",
         blurb:
-          "Seamlessly handled 1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours and big tournament events, serving several clubs from one multi-tenant codebase.",
+          "Handled 1M+ daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours.",
         problem:
-          "Clubs ran tee-time bookings, memberships, handicaps and tournament draws on spreadsheets, and the business wanted one product it could sell to many clubs rather than build per-client.",
+          "Modernize end-to-end operations for sports facilities, golf courses, local maintenance contractors and agronomic consulting teams.",
         approach:
-          "I architected the Angular portals and Node.js/Express APIs over PostgreSQL as a single multi-tenant codebase, added GraphQL for the club dashboards — each needing a different slice of the same tee-sheet and scoring data — and built a LangChain-based automation system for planning sport hardware installation and maintenance while moving the stack onto AWS ECS with Jenkins CI/CD.",
+          "Architected Angular portals and Node.js/Express APIs over PostgreSQL, used GraphQL for dynamic operations dashboards and REST for third-party integrations, and migrated containerized services to AWS ECS via Jenkins. Built a LangChain pipeline for hardware maintenance planning.",
         result:
-          "1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours, with release time cut from 45 to 10 minutes.",
+          "Handled 1M+ daily requests at 99.95% uptime during peak facility hours, improved field technician utilization by 25%, reduced deployment downtime by 80%, and cut manual scheduling overhead by 35%.",
         tier: "star",
         deepDiveId: undefined,
         cardMeta: "Xotiv · 2023 – 2025",
-        cardBadge: "Team of 6 · API + AWS migration",
+        cardBadge: "Team of 6 · API architecture + AWS migration",
         visual: {
           kind: "steps",
           big: "1M+",
           bigUnit: "req/day",
           caption:
-            "daily operational requests and real-time sensor and dispatch syncs, at 99.95% uptime across peak facility hours",
+            "daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours",
           steps: [
+            "Equipment tracking",
+            "Dispatch",
+            "Facility operations",
             "Sensor sync",
-            "Dispatch sync",
-            "Live leaderboards",
-            "Scorecard reconciliation",
           ],
         },
         externalLink: {
@@ -250,11 +248,12 @@ export const companies: Company[] = [
           href: "https://app.turfassistant.com/",
         },
         achievement:
-          "Seamlessly handled 1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours and big tournament events, serving several clubs from one multi-tenant codebase. Cut release time from 45 to 10 minutes by moving to AWS ECS with Jenkins CI/CD.",
-        lead: "Operations software for golf facilities: course management, tournaments, memberships and tee-time reservations. I owned the API architecture and the AWS migration.",
+          "Handled 1M+ daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours. Improved field technician utilization by 25% and reduced deployment downtime by 80% through containerization and AWS ECS migration.",
+        lead: "Operations software for sports facilities, golf courses and maintenance teams. I owned API architecture and AWS migration as part of a team of 6.",
         points: [
-          "Draw generation, live leaderboards and real-time scorecard reconciliation.",
-          "GraphQL where club dashboards need different slices of shared data; REST kept for webhooks and third-party integrations.",
+          "Engineered equipment tracking and dispatch workflows, improving field technician utilization by 25%.",
+          "Used GraphQL for dashboards and REST APIs for third-party integrations.",
+          "Built a LangChain maintenance-planning pipeline that reduced manual scheduling overhead by 35%.",
         ],
         chips: [
           "Angular",
@@ -269,51 +268,23 @@ export const companies: Company[] = [
         ],
       },
       {
-        id: "p5",
-        title: "DEVEBOL — AI-Assisted Sports Club Management Platform",
-        domain: "AI Product Engineering",
-        meta: "Next.js · Prisma · LangChain",
-        blurb: "A sports club platform with AI features.",
-        problem:
-          "Sports clubs ran rosters, schedules and member communication by hand, with no AI assistance and no reliable way to reach members in real time.",
-        approach:
-          "I built the platform on Next.js with Prisma over Supabase, added LangChain and Redis for the AI-assisted features, and wired up real-time member communication through Firebase push notifications, Twilio and SendGrid.",
-        result:
-          "Roster management, AI-assisted workflows and member notifications running on one platform instead of manual coordination.",
-        tier: "showcase",
-      },
-      {
-        id: "p10",
-        title: "AFFCO — Property & Tenant Management SaaS",
-        domain: "PropTech",
-        meta: "Next.js · Prisma · Stripe",
-        blurb: "A property management SaaS with automated rent processing.",
-        problem:
-          "A real estate agency tracked properties, tenants and rent collection across spreadsheets and manual follow-up, with no automated way to process rent or notify tenants.",
-        approach:
-          "I built the property and tenant management system on Next.js and Prisma, integrated Stripe to automate rent processing, and added SendGrid and Twilio for tenant and staff notifications.",
-        result:
-          "Rent collection and tenant communication running as one automated workflow instead of spreadsheets and manual follow-up calls.",
-        tier: "showcase",
-      },
-      {
         id: "p6",
-        title: "AI-Assisted ReadMyRhythm — Healthcare Telemedicine Platform",
+        title: "ReadMyRhythm — Telemedicine & EKG Review Platform",
         domain: "Healthcare & Compliance",
-        meta: "TrueVault · Supabase · Stripe",
+        meta: "Next.js · Python · FastAPI · LangChain",
         blurb:
-          "Owned system architecture for a clinician platform with AI-assisted first-pass reports, audited document access and Stripe reconciliation.",
+          "Owned system architecture for an AI-assisted clinician platform processing 50,000 ECGs per month.",
         problem:
-          "Institutional EKG review puts protected health data, third-party payments and an unforgiving compliance surface in one system.",
+          "Enable ingestion of diagnostic ECG/EKG data from smartwatches and personal devices for cardiologist interpretation within 24 hours, while connecting users with cardiac providers.",
         approach:
-          "I drew the data boundaries first — PHI isolated in TrueVault, application state in Supabase, neither crossing over — then automated Stripe reconciliation so the finance trail was a job, not a person.",
+          "Created a Next.js clinician platform with Python FastAPI file parsing and a LangChain RAG system for AI-assisted first-pass report drafting. Implemented OAuth 2.0/OIDC and secure document access with TrueVault, Supabase and short-lived signed URLs.",
         result:
-          "50,000 ECGs processed every month, 10,000+ monthly medical transactions reconciled automatically, zero reported compliance breaches.",
+          "Processes 50,000 ECGs per month through a secure clinician workflow.",
         tier: "star",
         deepDiveId: "p6",
         cardMeta: "Xotiv · 2023 – 2025",
         cardBadge: "Team of 4 · Architecture",
-        cardTitle: "AI-Assisted ReadMyRhythm",
+        cardTitle: "ReadMyRhythm — Telemedicine & EKG Review",
         visual: {
           kind: "ecg",
           big: "50,000",
@@ -324,13 +295,12 @@ export const companies: Company[] = [
           href: "https://readmyrhythm.com/",
         },
         achievement:
-          "Architected a platform that processes 50,000 ECGs every month, replacing email-based exchange of cardiac data with a secure, audited workflow and adding AI-assisted first-pass reports that cardiologists review and sign.",
-        lead: "Telemedicine and EKG review: wearable and uploaded diagnostic data reaches cardiologists through a compliant, clinician-facing platform.",
+          "Created a clinician platform processing 50,000 ECGs every month, with secure diagnostic data access and AI-assisted first-pass report drafting for cardiologist review.",
+        lead: "A telemedicine workflow connecting users with cardiac providers for review of wearable and uploaded diagnostic ECG/EKG data.",
         points: [
-          "Next.js clinician platform with FastAPI EKG file parsing and a RAG-based drafting workflow built on LangChain.",
-          "OAuth 2.0 / OIDC with TrueVault, Supabase and short-lived signed URLs.",
-          "Automated reconciliation of ~10,000 monthly institutional Stripe transactions.",
-          "Deployed on AWS ECS in private subnets.",
+          "Built Next.js clinician workflows and Python FastAPI ECG file parsing.",
+          "Integrated LangChain RAG for AI-assisted first-pass report drafting.",
+          "Implemented OAuth 2.0/OIDC and secure document access with TrueVault, Supabase and short-lived signed URLs.",
         ],
         chips: [
           "Next.js",
@@ -345,7 +315,7 @@ export const companies: Company[] = [
     ],
   },
   {
-    name: "Tata Consultancy Services",
+    name: "Tata Consultancy Services (TCS)",
     role: "Software Analyst",
     dates: "November 2020 — November 2023",
     href: "https://www.tcs.com",
@@ -354,30 +324,30 @@ export const companies: Company[] = [
         id: "p7",
         title: "Incentive Management System — FIAT",
         domain: "Enterprise & FinTech",
-        meta: "Java · Spring Boot · Jenkins",
+        meta: "Java · REST APIs · Angular · PostgreSQL",
         blurb:
-          "Wrote the low-level designs for settlement services and brought a 3-hour batch down to 40 minutes.",
+          "Owned low-level design for settlement services under the lead architect and optimized a batch processing $50M+ in annual dealer incentives.",
         problem:
-          "Dealer incentives and commissions were calculated across configurable sales rules where a rounding error is a financial defect.",
+          "Optimize the enterprise sales incentive lifecycle with a multi-tier approval pipeline and a high-performance financial settlement engine.",
         approach:
-          "Java and Spring Boot microservices for incentive and commission workflows, dynamic sales configuration, and Jenkins CI/CD on AWS — plus the production support that came with it.",
+          "Developed Java microservices and Angular dashboards, authored low-level designs for settlement services, partitioned dealer datasets and implemented set-based aggregation. Automated AWS EC2 releases via Jenkins.",
         result:
-          "Settlement batch brought from 3 hours to 40 minutes, processing and reconciliation of more than $50M in annual dealer incentives.",
+          "Reduced settlement batch processing from 3 hours to 40 minutes and scaled batch capacity 4x without additional cloud infrastructure costs.",
         tier: "showcase",
       },
       {
         id: "p8",
         title: "Optical Fiber Management System — Comcast",
         domain: "Telecom Infrastructure",
-        meta: "Express.js · Angular · MongoDB",
+        meta: "Angular · TypeScript · Node.js · MongoDB",
         blurb:
-          "Owned topology APIs and the dashboard query layer; reworked MongoDB aggregations from repeated 30-second timeouts to about 2 seconds.",
+          "Owned network topology APIs and dashboard queries monitoring more than 15,000 optical fiber nodes.",
         problem:
-          "Engineers monitoring optical fiber infrastructure were waiting on queries over high-volume telecom data during maintenance windows.",
+          "Deliver real-time visibility, route planning and predictive maintenance across extensive optical fiber infrastructure.",
         approach:
-          "Express.js backend work and Angular application components, with the heavy MongoDB aggregation pipelines rewritten and indexed for the access patterns that actually ran.",
+          "Created Angular topology dashboards and Node.js REST services on MongoDB, then redesigned complex MongoDB aggregation pipelines for the dashboard query layer.",
         result:
-          "Roughly 60% lower query latency, supporting high-availability telecom maintenance.",
+          "Reduced query latency by more than 60%, improving affected queries from repeated 30-second timeouts to approximately 2 seconds.",
         tier: "showcase",
       },
     ],
@@ -520,12 +490,19 @@ export const deepDives: DeepDive[] = [
 
 export const skillGroups = [
   {
-    title: "Languages",
-    items: ["Python", "TypeScript", "JavaScript (ES6+)", "SQL", "Java", "C++"],
+    title: "Programming languages",
+    items: [
+      "Python",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Java (working knowledge)",
+      "SQL",
+      "C++",
+    ],
   },
   {
     title: "Frontend",
-    items: ["React.js", "Next.js", "Angular", "HTML5", "CSS3", "GraphQL"],
+    items: ["React.js", "Next.js", "Angular", "HTML5", "CSS3"],
   },
   {
     title: "Backend & architecture",
@@ -534,18 +511,20 @@ export const skillGroups = [
       "Node.js",
       "NestJS",
       "Express.js",
-      "Spring Boot",
-      "REST",
+      "RESTful APIs",
       "GraphQL",
       "OAuth 2.0 / OIDC",
       "Microservices",
-      "Event-driven",
+      "Event-Driven Architecture",
       "Kafka",
       "RabbitMQ",
       "WebRTC",
-      "MCP",
+      "Model Context Protocol (MCP)",
+      "Claude Code",
       "System design",
-      "HLD / LLD",
+      "HLD (High Level Design)",
+      "LLD (Low Level Design)",
+      "Data Structures & Algorithms",
     ],
   },
   {
@@ -580,20 +559,16 @@ export const skillGroups = [
     ],
   },
   {
-    title: "Integrations & quality",
+    title: "Quality & observability",
     items: [
-      "Stripe",
-      "Firebase",
-      "Twilio",
-      "SendGrid",
       "OpenTelemetry",
       "Distributed tracing",
       "Swagger",
       "Jest",
-      "Sentry",
-      "Datadog",
       "Code review",
       "Agile / Scrum",
+      "Sentry",
+      "Datadog",
     ],
   },
 ];
@@ -617,8 +592,9 @@ export const marquee = [
 
 export const about = {
   education: {
-    degree: "B.Tech, Electrical Engineering",
-    institution: "Academy of Technology (West Bengal University of Technology)",
+    degree: "Bachelor of Technology (B.Tech), Electrical Engineering",
+    institution:
+      "Academy of Technology (West Bengal University of Technology), West Bengal",
     years: "2016 — 2020 · CGPA 8.1",
     location: "India · UTC+5:30",
   },
