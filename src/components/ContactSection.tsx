@@ -17,12 +17,27 @@ const ContactSection = () => {
         <div className="contact rv">
           <h2 className="c-h disp">Let's build something that scales.</h2>
           <p className="c-sub">
-            Open to conversations about backend, full-stack and real-time systems. The fastest way to reach
-            me is email.
+            Open to conversations about backend, full-stack and real-time
+            systems. Reach me by email or WhatsApp.
           </p>
           <div className="c-row">
-            <a className="clink clink-f" href={profile.resumeFile} target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <a
+              className="clink clink-f"
+              href={profile.resumeFile}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="M12 3v12" />
                 <path d="m7 11 5 5 5-5" />
                 <path d="M5 21h14" />
@@ -30,7 +45,17 @@ const ContactSection = () => {
               Download resume
             </a>
             <a className="clink" href={`mailto:${profile.email}`}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path d="m3 7 9 6 9-6" />
               </svg>
@@ -43,25 +68,76 @@ const ContactSection = () => {
               aria-live="polite"
             >
               {copied ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <path d="M20 6 9 17l-5-5" />
                 </svg>
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <rect x="8" y="8" width="14" height="14" rx="2" />
                   <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
                 </svg>
               )}
               {copied ? "Copied" : "Copy email"}
             </button>
-            <a className="clink" href={profile.phoneHref}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+            <a
+              className="clink"
+              href={profile.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20.25 11.5a8.25 8.25 0 0 1-12.1 7.25L3 20l1.25-4.9A8.25 8.25 0 1 1 20.25 11.5Z" />
+                <path d="M8.1 6.9a1.1 1.1 0 0 0-.8.35l-.7.75a2 2 0 0 0-.45 1.8c.65 2.9 3.15 5.65 6.25 6.95a2 2 0 0 0 1.85-.2l.9-.6a1.1 1.1 0 0 0 .05-1.8l-1.45-1.1a1.1 1.1 0 0 0-1.4.1l-.55.55a8.1 8.1 0 0 1-2.8-2.95l.55-.5a1.1 1.1 0 0 0 .2-1.35L9.05 7.5a1.1 1.1 0 0 0-.95-.6Z" />
               </svg>
-              {profile.phone}
+              WhatsApp
             </a>
-            <a className="clink" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <a
+              className="clink"
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="M7 17 17 7" />
                 <path d="M8 7h9v9" />
               </svg>
