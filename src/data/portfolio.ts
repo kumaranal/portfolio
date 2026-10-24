@@ -62,7 +62,13 @@ export const strengths = [
 export type ProjectVisual =
   | { kind: "flow"; big: string; caption: string; from: string; to: string }
   | { kind: "ecg"; big: string; caption: string }
-  | { kind: "steps"; big: string; bigUnit?: string; caption: string; steps: string[] };
+  | {
+      kind: "steps";
+      big: string;
+      bigUnit?: string;
+      caption: string;
+      steps: string[];
+    };
 
 export type WorkItem = {
   id: string;
@@ -132,14 +138,14 @@ export const companies: Company[] = [
         visual: {
           kind: "flow",
           big: "20+",
-          caption: "live camera feeds, plus commentary feeds, run entirely from software",
+          caption:
+            "live camera feeds, plus commentary feeds, run entirely from software",
           from: "Cable-based setup",
           to: "Software-defined production",
         },
         achievement:
           "Replaced a traditional cable-based production setup with software. Built from a blank slate, it handles 20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, and distributes to YouTube Live and Discord.",
-        lead:
-          "A high-throughput, low-latency platform focused on the production side of broadcasting. Viewer-facing distribution and playback stay on the platforms audiences already use. I owned system architecture and the Python media orchestration services.",
+        lead: "A high-throughput, low-latency platform focused on the production side of broadcasting. Viewer-facing distribution and playback stay on the platforms audiences already use. I owned system architecture and the Python media orchestration services.",
         points: [
           "Defined APIs, data models and service boundaries for real-time media workflows.",
           "React producer console plus FastAPI orchestration with LangChain automation, Redis caching and fault-tolerant fallback paths.",
@@ -147,7 +153,21 @@ export const companies: Company[] = [
         ],
         tradeoff:
           "Chose a LiveKit SFU over peer-to-peer so publisher bandwidth stays flat as more subscribers join, and server-side transcoding and recording become possible.",
-        chips: ["React", "TypeScript", "FastAPI", "WebRTC", "LiveKit", "LangChain", "Redis", "PostgreSQL", "Docker", "Kubernetes", "Helm", "Terraform", "AWS EKS"],
+        chips: [
+          "React",
+          "TypeScript",
+          "FastAPI",
+          "WebRTC",
+          "LiveKit",
+          "LangChain",
+          "Redis",
+          "PostgreSQL",
+          "Docker",
+          "Kubernetes",
+          "Helm",
+          "Terraform",
+          "AWS EKS",
+        ],
       },
       {
         id: "p3",
@@ -202,7 +222,7 @@ export const companies: Company[] = [
         domain: "Multi-tenant SaaS",
         meta: "Angular · Node.js · GraphQL",
         blurb:
-          "Owned API architecture and the AWS migration for a multi-tenant product, taking release time from 45 to 10 minutes.",
+          "Seamlessly handled 1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours and big tournament events, serving several clubs from one multi-tenant codebase.",
         problem:
           "Clubs ran tee-time bookings, memberships, handicaps and tournament draws on spreadsheets, and the business wanted one product it could sell to many clubs rather than build per-client.",
         approach:
@@ -217,19 +237,37 @@ export const companies: Company[] = [
           kind: "steps",
           big: "1M+",
           bigUnit: "req/day",
-          caption: "daily operational requests and real-time sensor and dispatch syncs, at 99.95% uptime across peak facility hours",
-          steps: ["Sensor sync", "Dispatch sync", "Live leaderboards", "Scorecard reconciliation"],
+          caption:
+            "daily operational requests and real-time sensor and dispatch syncs, at 99.95% uptime across peak facility hours",
+          steps: [
+            "Sensor sync",
+            "Dispatch sync",
+            "Live leaderboards",
+            "Scorecard reconciliation",
+          ],
         },
-        externalLink: { label: "Visit Turf Assistant", href: "https://app.turfassistant.com/" },
+        externalLink: {
+          label: "Visit Turf Assistant",
+          href: "https://app.turfassistant.com/",
+        },
         achievement:
           "Seamlessly handled 1M+ daily operational requests and real-time sensor and dispatch syncs at 99.95% uptime across peak facility hours and big tournament events, serving several clubs from one multi-tenant codebase. Cut release time from 45 to 10 minutes by moving to AWS ECS with Jenkins CI/CD.",
-        lead:
-          "Operations software for golf facilities: course management, tournaments, memberships and tee-time reservations. I owned the API architecture and the AWS migration.",
+        lead: "Operations software for golf facilities: course management, tournaments, memberships and tee-time reservations. I owned the API architecture and the AWS migration.",
         points: [
           "Draw generation, live leaderboards and real-time scorecard reconciliation.",
           "GraphQL where club dashboards need different slices of shared data; REST kept for webhooks and third-party integrations.",
         ],
-        chips: ["Angular", "Node.js", "Express", "GraphQL", "PostgreSQL", "Sequelize", "Redis", "AWS ECS", "Jenkins"],
+        chips: [
+          "Angular",
+          "Node.js",
+          "Express",
+          "GraphQL",
+          "PostgreSQL",
+          "Sequelize",
+          "Redis",
+          "AWS ECS",
+          "Jenkins",
+        ],
       },
       {
         id: "p5",
@@ -277,19 +315,33 @@ export const companies: Company[] = [
         cardMeta: "Xotiv · 2023 – 2025",
         cardBadge: "Team of 4 · Architecture",
         cardTitle: "ReadMyRhythm",
-        visual: { kind: "ecg", big: "50,000", caption: "ECGs processed every month" },
-        externalLink: { label: "Visit readmyrhythm.com", href: "https://readmyrhythm.com/" },
+        visual: {
+          kind: "ecg",
+          big: "50,000",
+          caption: "ECGs processed every month",
+        },
+        externalLink: {
+          label: "Visit readmyrhythm.com",
+          href: "https://readmyrhythm.com/",
+        },
         achievement:
           "Architected a platform that processes 50,000 ECGs every month, replacing email-based exchange of cardiac data with a secure, audited workflow and adding AI-assisted first-pass reports that cardiologists review and sign.",
-        lead:
-          "Telemedicine and EKG review: wearable and uploaded diagnostic data reaches cardiologists through a compliant, clinician-facing platform.",
+        lead: "Telemedicine and EKG review: wearable and uploaded diagnostic data reaches cardiologists through a compliant, clinician-facing platform.",
         points: [
           "Next.js clinician platform with FastAPI EKG file parsing and a RAG-based drafting workflow built on LangChain.",
           "OAuth 2.0 / OIDC with TrueVault, Supabase and short-lived signed URLs.",
           "Automated reconciliation of ~10,000 monthly institutional Stripe transactions.",
           "Deployed on AWS ECS in private subnets.",
         ],
-        chips: ["Next.js", "FastAPI", "LangChain", "Supabase", "TrueVault", "Stripe", "AWS ECS"],
+        chips: [
+          "Next.js",
+          "FastAPI",
+          "LangChain",
+          "Supabase",
+          "TrueVault",
+          "Stripe",
+          "AWS ECS",
+        ],
       },
     ],
   },
@@ -468,8 +520,14 @@ export const deepDives: DeepDive[] = [
 ];
 
 export const skillGroups = [
-  { title: "Languages", items: ["Python", "TypeScript", "JavaScript (ES6+)", "SQL", "Java", "C++"] },
-  { title: "Frontend", items: ["React.js", "Next.js", "Angular", "HTML5", "CSS3", "GraphQL"] },
+  {
+    title: "Languages",
+    items: ["Python", "TypeScript", "JavaScript (ES6+)", "SQL", "Java", "C++"],
+  },
+  {
+    title: "Frontend",
+    items: ["React.js", "Next.js", "Angular", "HTML5", "CSS3", "GraphQL"],
+  },
   {
     title: "Backend & architecture",
     items: [
@@ -493,15 +551,51 @@ export const skillGroups = [
   },
   {
     title: "Cloud & DevOps",
-    items: ["AWS (EKS, ECS, EC2, S3, Lambda)", "GCP", "Kubernetes", "Docker", "Helm", "Terraform", "Jenkins", "CI/CD", "Git", "Microsoft Entra ID"],
+    items: [
+      "AWS (EKS, ECS, EC2, S3, Lambda)",
+      "GCP",
+      "Kubernetes",
+      "Docker",
+      "Helm",
+      "Terraform",
+      "Jenkins",
+      "CI/CD",
+      "Git",
+      "Microsoft Entra ID",
+    ],
   },
   {
     title: "Data & AI",
-    items: ["PostgreSQL", "MongoDB", "Redis", "OpenSearch", "Supabase", "GeoServer", "Prisma", "Sequelize", "LLMs", "RAG", "LangChain"],
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "OpenSearch",
+      "Supabase",
+      "GeoServer",
+      "Prisma",
+      "Sequelize",
+      "LLMs",
+      "RAG",
+      "LangChain",
+    ],
   },
   {
     title: "Integrations & quality",
-    items: ["Stripe", "Firebase", "Twilio", "SendGrid", "OpenTelemetry", "Distributed tracing", "Swagger", "Jest", "Sentry", "Datadog", "Code review", "Agile / Scrum"],
+    items: [
+      "Stripe",
+      "Firebase",
+      "Twilio",
+      "SendGrid",
+      "OpenTelemetry",
+      "Distributed tracing",
+      "Swagger",
+      "Jest",
+      "Sentry",
+      "Datadog",
+      "Code review",
+      "Agile / Scrum",
+    ],
   },
 ];
 
@@ -545,7 +639,8 @@ export const certifications: Certification[] = [
     issuer: "Claude Academy · Anthropic",
     issued: "September 2026",
     credentialId: "c749e82dcf22d97d77eaf13e7caa46db",
-    credentialUrl: "https://academy.claude.com/verify/c749e82dcf22d97d77eaf13e7caa46db",
+    credentialUrl:
+      "https://academy.claude.com/verify/c749e82dcf22d97d77eaf13e7caa46db",
   },
   {
     title: "Certified Associate JavaScript Programmer",
