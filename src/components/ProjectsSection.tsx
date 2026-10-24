@@ -11,7 +11,17 @@ const featured = featuredIds
 const ExtLink = ({ label, href }: { label: string; href: string }) => (
   <a className="ext" href={href} target="_blank" rel="noopener noreferrer">
     {label}
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M7 17 17 7" />
       <path d="M8 7h9v9" />
     </svg>
@@ -29,7 +39,11 @@ const ProjectVisual = ({ item }: { item: WorkItem }) => {
           <div className="ecg-n disp">{visual.big}</div>
           <div className="fh-t">{visual.caption}</div>
         </div>
-        <div className="fh-flow" role="img" aria-label={`${visual.from} replaced by ${visual.to}`}>
+        <div
+          className="fh-flow fh-flow-conversion"
+          role="img"
+          aria-label={`${visual.from} replaced by ${visual.to}`}
+        >
           <span className="fh-old">{visual.from}</span>
           <span className="fh-line" aria-hidden="true" />
           <span className="fh-new">{visual.to}</span>
@@ -41,7 +55,12 @@ const ProjectVisual = ({ item }: { item: WorkItem }) => {
   if (visual.kind === "ecg") {
     return (
       <div className="ecg-hero">
-        <svg className="ecg" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true">
+        <svg
+          className="ecg"
+          viewBox="0 0 400 80"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
           <path
             pathLength={400}
             d="M0 40 H60 L72 40 L80 10 L90 70 L100 28 L108 40 H170 L182 40 L190 14 L200 66 L210 30 L218 40 H280 L292 40 L300 12 L310 68 L320 28 L328 40 H400"
@@ -58,13 +77,22 @@ const ProjectVisual = ({ item }: { item: WorkItem }) => {
       <div>
         <div className="ecg-n disp">
           {visual.big}
-          {visual.bigUnit && <span style={{ fontSize: "0.4em" }}> {visual.bigUnit}</span>}
+          {visual.bigUnit && (
+            <span style={{ fontSize: "0.4em" }}> {visual.bigUnit}</span>
+          )}
         </div>
         <div className="fh-t">{visual.caption}</div>
       </div>
-      <div className="fh-flow" aria-label="Event workflows the platform handles">
+      <div
+        className="fh-flow"
+        aria-label="Event workflows the platform handles"
+      >
         {visual.steps.map((step, i) => (
-          <span className="fh-step" key={step} style={{ "--k": i * 0.5 } as CSSProperties}>
+          <span
+            className="fh-step"
+            key={step}
+            style={{ "--k": i * 0.5 } as CSSProperties}
+          >
             {step}
           </span>
         ))}
@@ -89,7 +117,12 @@ const ProjectsSection = () => {
               </div>
               <ProjectVisual item={item} />
               <h3 className="disp">{item.cardTitle ?? item.title}</h3>
-              {item.externalLink && <ExtLink label={item.externalLink.label} href={item.externalLink.href} />}
+              {item.externalLink && (
+                <ExtLink
+                  label={item.externalLink.label}
+                  href={item.externalLink.href}
+                />
+              )}
               {item.achievement && (
                 <p className="ach">
                   <b>Achievement</b>
