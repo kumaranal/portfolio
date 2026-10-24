@@ -150,6 +150,21 @@ export const companies: Company[] = [
         chips: ["React", "TypeScript", "FastAPI", "WebRTC", "LiveKit", "LangChain", "Redis", "PostgreSQL", "Docker", "Kubernetes", "Helm", "Terraform", "AWS EKS"],
       },
       {
+        id: "p3",
+        title: "Electrical Instrumentation System (IQGeo)",
+        domain: "GIS & Spatial Data",
+        meta: "FastAPI · GeoServer · MongoDB",
+        blurb:
+          "Spatial asset management for electrical infrastructure with FastAPI, React, GeoServer and MongoDB.",
+        problem:
+          "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
+        approach:
+          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, deployed on AWS with Jenkins.",
+        result:
+          "A single interactive system for tracking and maintaining electrical infrastructure assets, replacing scattered records with one spatial view.",
+        tier: "showcase",
+      },
+      {
         id: "p2",
         title: "Enterprise QA Automation & Event-Driven Platform",
         domain: "Distributed Systems",
@@ -172,21 +187,6 @@ export const companies: Company[] = [
         diagramCaption:
           "Ordering and replay come from the topic; correctness under retry comes from the consumer.",
         deepDiveId: "p2",
-      },
-      {
-        id: "p3",
-        title: "Electrical Instrumentation System (IQGeo)",
-        domain: "GIS & Spatial Data",
-        meta: "FastAPI · GeoServer · MongoDB",
-        blurb:
-          "Spatial asset management for electrical infrastructure with FastAPI, React, GeoServer and MongoDB.",
-        problem:
-          "Electrical infrastructure assets had no central system for tracking location, status and maintenance history on an interactive map.",
-        approach:
-          "I designed and deployed an asset management system on FastAPI and React, using GeoServer for the spatial-data mapping layer and MongoDB for flexible asset storage, deployed on AWS with Jenkins.",
-        result:
-          "A single interactive system for tracking and maintaining electrical infrastructure assets, replacing scattered records with one spatial view.",
-        tier: "showcase",
       },
     ],
   },
