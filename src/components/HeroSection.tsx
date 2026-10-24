@@ -14,8 +14,7 @@ const HeroSection = () => {
             className="h1 disp in"
             style={{ "--i": 1, marginTop: 22 } as CSSProperties}
           >
-            Backend-first engineer building{" "}
-            <span className="hl">real-time</span> systems at scale.
+            Building <span className="hl">Full-stack systems</span> at scale.
           </h1>
           <p
             className="sub in"
