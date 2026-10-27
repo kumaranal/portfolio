@@ -205,6 +205,30 @@ export const companies: Company[] = [
           "Kubernetes",
         ],
       },
+      {
+        id: "p2",
+        title: "AI-Assisted Enterprise QA Automation & Event-Driven Platform",
+        domain: "Distributed Systems",
+        meta: "Kafka · NestJS · 11 services",
+        blurb:
+          "Split a monolithic test runner into 11 NestJS microservices over Kafka and cut production MTTR by 40% across ~1M daily events.",
+        problem:
+          "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
+        approach:
+          "I decomposed the monolithic runner into 11 Kafka-based NestJS microservices: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I integrated Keycloak for OAuth 2.0/OIDC single sign-on, automated bug tracking and Jira ticketing workflows, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
+        result:
+          "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery.",
+        tier: "star",
+        diagram: [
+          { label: "Producers", caption: "runners, schedulers" },
+          { label: "Kafka topics", caption: "keyed, replayable" },
+          { label: "11 consumers", caption: "idempotent, retry + DLQ" },
+          { label: "Telemetry store", caption: "1M events / day" },
+        ],
+        diagramCaption:
+          "Ordering and replay come from the topic; correctness under retry comes from the consumer.",
+        deepDiveId: "p2",
+      },
     ],
   },
   {
@@ -266,6 +290,34 @@ export const companies: Company[] = [
           "AWS ECS",
           "Jenkins",
         ],
+      },
+      {
+        id: "p5",
+        title: "DEVEBOL — AI-Assisted Sports Club Management Platform",
+        domain: "AI Product Engineering",
+        meta: "Next.js · Prisma · LangChain",
+        blurb: "A sports club platform with AI features.",
+        problem:
+          "Sports clubs ran rosters, schedules and member communication by hand, with no AI assistance and no reliable way to reach members in real time.",
+        approach:
+          "I built the platform on Next.js with Prisma over Supabase, added LangChain and Redis for the AI-assisted features, and wired up real-time member communication through Firebase push notifications, Twilio and SendGrid.",
+        result:
+          "Roster management, AI-assisted workflows and member notifications running on one platform instead of manual coordination.",
+        tier: "showcase",
+      },
+      {
+        id: "p10",
+        title: "AFFCO — Property & Tenant Management SaaS",
+        domain: "PropTech",
+        meta: "Next.js · Prisma · Stripe",
+        blurb: "A property management SaaS with automated rent processing.",
+        problem:
+          "A real estate agency tracked properties, tenants and rent collection across spreadsheets and manual follow-up, with no automated way to process rent or notify tenants.",
+        approach:
+          "I built the property and tenant management system on Next.js and Prisma, integrated Stripe to automate rent processing, and added SendGrid and Twilio for tenant and staff notifications.",
+        result:
+          "Rent collection and tenant communication running as one automated workflow instead of spreadsheets and manual follow-up calls.",
+        tier: "showcase",
       },
       {
         id: "p6",
