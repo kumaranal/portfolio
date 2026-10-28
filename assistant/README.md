@@ -19,9 +19,9 @@ cd infra
 cp backend.hcl.example backend.hcl       # fill in your state bucket
 terraform init -backend-config=backend.hcl
 terraform apply -var budget_alert_email=you@example.com -var deploy_lambda=false   # ECR only
-# build + push (arm64) from assistant/backend:
+# build + push from assistant/backend (see infra/CLOUDSHELL.md for the full Linux walkthrough):
 aws ecr get-login-password | docker login --username AWS --password-stdin <ecr_repository_url>
-docker buildx build --platform linux/arm64 -t <ecr_repository_url>:latest --push .
+docker buildx build -t <ecr_repository_url>:latest --push .
 terraform apply -var budget_alert_email=you@example.com                            # Lambda, CloudFront, WAF
 ```
 Re-run `node scripts/export-knowledge.mjs` and rebuild the image whenever `src/data/portfolio.ts` changes.
