@@ -135,3 +135,40 @@ def test_origin_secret_enforced_when_configured(make_client, monkeypatch):
     assert c.post("/chat", json=USER).status_code == 403
     assert c.post("/chat", json=USER, headers={"x-origin-secret": "wrong"}).status_code == 403
     assert c.post("/chat", json=USER, headers={"x-origin-secret": "s3cret"}).status_code == 200
+
+
+def test_tool_call_written_as_text_becomes_action(make_client):
+    fake = FakeBedrock(text_events("navigate_to", '_section("ski', 'lls")\n\n', "Anal's main skills are Python."))
+    events = parse_sse(make_client(fake).post("/chat", json=USER).text)
+    assert events == [
+        ("action", {"type": "navigate", "target": "skills"}),
+        ("text", {"delta": "Anal's main skills are Python."}),
+        ("done", {}),
+    ]
+
+
+def test_backticked_keyword_call_mid_text_is_stripped():
+    from app.tools import LeakedCallFilter
+
+    f = LeakedCallFilter()
+    out = f.feed("Here you go. `open_link(link='linkedin')` Enjoy.") + f.flush()
+    text = "".join(d["delta"] for k, d in out if k == "text")
+    assert text == "Here you go. Enjoy."
+    assert ("action", {"type": "open_link", "target": "linkedin"}) in out
+
+
+def test_ordinary_text_passes_through_and_invalid_leak_is_dropped():
+    from app.tools import LeakedCallFilter
+
+    f = LeakedCallFilter()
+    out = f.feed("He can open") + f.feed("_source work and navigate teams. ") + f.feed('navigate_to_section("admin")') + f.flush()
+    assert [k for k, _ in out] == ["text", "text"]
+    assert "".join(d["delta"] for _, d in out) == "He can open_source work and navigate teams. "
+
+
+def test_unclosed_call_is_released_after_hold_limit():
+    from app.tools import LeakedCallFilter
+
+    f = LeakedCallFilter()
+    out = f.feed("navigate_to_section(" + "x" * 100)
+    assert "".join(d["delta"] for _, d in out).startswith("navigate_to_section(")

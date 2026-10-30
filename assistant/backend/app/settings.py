@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # Bedrock cross-region inference profile ID (or model ID) for Claude Haiku.
     # Verify with: aws bedrock list-inference-profiles
-    model_id: str = "us.anthropic.claude-haiku-5-5"
+    model_id: str = "us.amazon.nova-2-lite-v1:0"
     aws_region: str = "us-east-1"
     max_output_tokens: int = 600
     temperature: float = 0.3

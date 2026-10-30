@@ -3,7 +3,7 @@ import json
 import logging
 from collections.abc import Callable, Iterator
 
-from .tools import TOOL_CONFIG, to_action
+from .tools import TOOL_CONFIG, LeakedCallFilter, to_action
 
 log = logging.getLogger("assistant.chat")
 
@@ -49,6 +49,13 @@ def run_chat(
             text_parts: list[str] = []
             tool: dict | None = None
             stop_reason = None
+            leaks = LeakedCallFilter()
+
+            def emit(items: list[tuple[str, dict]]) -> Iterator[str]:
+                for kind, data in items:
+                    if kind == "text":
+                        text_parts.append(data["delta"])
+                    yield sse(kind, data)
 
             for event in response["stream"]:
                 if "contentBlockStart" in event:
@@ -58,11 +65,11 @@ def run_chat(
                 elif "contentBlockDelta" in event:
                     delta = event["contentBlockDelta"]["delta"]
                     if "text" in delta:
-                        text_parts.append(delta["text"])
-                        yield sse("text", {"delta": delta["text"]})
+                        yield from emit(leaks.feed(delta["text"]))
                     elif "toolUse" in delta and tool is not None:
                         tool["input"] += delta["toolUse"].get("input", "")
                 elif "contentBlockStop" in event:
+                    yield from emit(leaks.flush())
                     if tool is not None:
                         try:
                             tool["parsed"] = json.loads(tool["input"] or "{}")
@@ -77,6 +84,11 @@ def run_chat(
                         text_parts = []
                 elif "messageStop" in event:
                     stop_reason = event["messageStop"]["stopReason"]
+
+            yield from emit(leaks.flush())
+            if text_parts:
+                content.append({"text": "".join(text_parts)})
+                text_parts = []
 
             if stop_reason != "tool_use":
                 break
