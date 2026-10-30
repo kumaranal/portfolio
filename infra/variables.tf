@@ -23,19 +23,19 @@ variable "deploy_lambda" {
 variable "bedrock_model_id" {
   description = "Inference profile ID the app calls."
   type        = string
-  default     = "us.anthropic.claude-haiku-5-5"
+  default     = "us.amazon.nova-2-lite-v1:0"
 }
 
 variable "bedrock_foundation_model_id" {
   description = "Underlying foundation model the inference profile routes to (for IAM)."
   type        = string
-  default     = "anthropic.claude-haiku-5-5"
+  default     = "amazon.nova-2-lite-v1:0"
 }
 
 variable "allowed_origins" {
   description = "Browser origins allowed by CORS."
   type        = list(string)
-  default     = ["https://analkumarbiswas.com", "http://localhost:8080"]
+  default     = ["https://analkumarbiswas.com", "https://www.analkumarbiswas.com", "http://localhost:8080"]
 }
 
 variable "daily_message_limit" {

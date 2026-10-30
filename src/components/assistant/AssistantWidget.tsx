@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { navigateToSection } from "./actions";
+import { plainText } from "./plainText";
 import { API_URL, useAssistant } from "./useAssistant";
 
 const STARTERS = [
@@ -96,7 +97,8 @@ const AssistantWidget = () => {
             </div>
           </header>
 
-          <div className="ai-log" ref={logRef} role="log" aria-live="polite" aria-busy={streaming}>
+          {/* data-lenis-prevent: let this panel scroll natively instead of Lenis hijacking the wheel */}
+          <div className="ai-log" ref={logRef} data-lenis-prevent role="log" aria-live="polite" aria-busy={streaming}>
             {messages.length === 0 && (
               <div className="ai-empty">
                 <p>Ask about experience, projects or skills, or ask me to take you to a section.</p>
@@ -112,7 +114,7 @@ const AssistantWidget = () => {
 
             {messages.map((m) => (
               <div key={m.id} className={`ai-msg ai-${m.role}`}>
-                {m.content || (streaming && m.role === "assistant" ? <span className="ai-dots" aria-label="Thinking"><i /><i /><i /></span> : null)}
+                {plainText(m.content) || (streaming && m.role === "assistant" ? <span className="ai-dots" aria-label="Thinking"><i /><i /><i /></span> : null)}
                 {m.links?.map((l) => (
                   <a key={l.href} className="ai-link" href={l.href} target={l.href.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer">
                     {l.label} ↗
