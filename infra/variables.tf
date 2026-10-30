@@ -35,7 +35,7 @@ variable "bedrock_foundation_model_id" {
 variable "allowed_origins" {
   description = "Browser origins allowed by CORS."
   type        = list(string)
-  default     = ["https://analkumarbiswas.com", "http://localhost:8080"]
+  default     = ["https://analkumarbiswas.com", "https://www.analkumarbiswas.com", "http://localhost:8080"]
 }
 
 variable "daily_message_limit" {
