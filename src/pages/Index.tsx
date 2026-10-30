@@ -9,6 +9,7 @@ import EducationSection from "@/components/EducationSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import AssistantWidget from "@/components/assistant/AssistantWidget";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      <AssistantWidget />
     </div>
   );
 };

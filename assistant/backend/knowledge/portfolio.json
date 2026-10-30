@@ -1,0 +1,284 @@
+{
+  "profile": {
+    "name": "ANAL KUMAR BISWAS",
+    "role": "Senior Software Engineer",
+    "location": "Kolkata, India · Open to relocation",
+    "email": "kumaranal.official@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/anal-kumar-biswas-733488356/",
+    "website": "https://analkumarbiswas.com",
+    "whatsapp": "https://wa.me/917003080703",
+    "resume": "https://drive.google.com/file/d/1M4vigssr-YsJ2XFCGaAU4STqZ4oS8tG3/view?usp=sharing",
+    "fullResume": "https://drive.google.com/file/d/1Htnem3Q17wy63XJpvTpdd08dlNctl6Sx/view?usp=sharing"
+  },
+  "highlights": [
+    {
+      "label": "Live Broadcasting Platform",
+      "value": "20+",
+      "unit": "feeds",
+      "desc": "Replaced a cable-based setup with software: 20+ camera feeds, commentary and scoreboard graphics orchestrated at 99.9% availability per match window."
+    },
+    {
+      "label": "IQGeo Electrical Assets",
+      "value": "100k+",
+      "unit": "assets",
+      "desc": "Built a spatial asset management platform with real-time mapping for more than 100,000 electrical grid assets."
+    },
+    {
+      "label": "Turf Assistant",
+      "value": "1M+",
+      "unit": "req/day",
+      "desc": "Handled daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours."
+    },
+    {
+      "label": "FIAT Incentive Settlement",
+      "value": "3h→40",
+      "unit": "min",
+      "desc": "Re-engineered the settlement batch for a system processing $50M+ in annual incentives."
+    }
+  ],
+  "strengths": [
+    {
+      "title": "Backend & API ownership",
+      "body": "Design and implement production REST/GraphQL APIs, service boundaries, data models and integration flows using Python/FastAPI and Node.js/NestJS/Express.js."
+    },
+    {
+      "title": "Full-stack delivery",
+      "body": "Build React and Angular interfaces alongside backend services, with a practical focus on scalability, caching, async processing, observability, CI/CD and cloud deployment."
+    },
+    {
+      "title": "System design",
+      "body": "Work across HLD/LLD, microservices, event-driven architecture, Kafka, Redis, database optimization and production debugging; mentor through design and code review."
+    }
+  ],
+  "experience": [
+    {
+      "company": "GNAPI Technologies Pvt. Ltd.",
+      "role": "Senior Software Engineer",
+      "dates": "July 2025 — Present",
+      "projects": [
+        {
+          "id": "p1",
+          "title": "Live Broadcasting Platform",
+          "domain": "Media & Real-time Infrastructure",
+          "stack": "Python · FastAPI · WebRTC · LiveKit",
+          "summary": "Architected a greenfield WebRTC and LiveKit platform for the production side of live sport: cameras, commentary and scoreboard graphics, feeding YouTube Live and Discord.",
+          "problem": "A legacy, cable-based production setup broke under tournament traffic: latency climbed with the audience, feeds dropped mid-match, and capacity had to be guessed days ahead of an event.",
+          "approach": "I owned system architecture and Python media orchestration, building a greenfield WebRTC and LiveKit platform with a React producer console, FastAPI orchestration, Redis caching and fault-tolerant fallback paths. The platform integrates with YouTube Live and Discord for distribution.",
+          "result": "20+ camera feeds, live commentary feeds and real-time scoreboard graphics from one platform at 99.9% availability per match window, built from scratch by a team of 8.",
+          "tradeoff": "Designed the production platform around software orchestration while retaining third-party platforms for viewer-facing distribution and playback."
+        },
+        {
+          "id": "p3",
+          "title": "AI-Assisted Electrical Instrumentation System (IQGeo)",
+          "domain": "GIS & Spatial Data",
+          "stack": "Python · FastAPI · GeoServer · MongoDB",
+          "summary": "Built spatial asset management backends and React interfaces enabling real-time mapping for 100,000+ electrical grid assets.",
+          "problem": "Build a robust spatial asset management platform for IQGeo to monitor, maintain and map critical electrical infrastructure in real time.",
+          "approach": "Designed asset-management backends in Python FastAPI and React, integrated GeoServer with MongoDB for dynamic spatial layers, and built a LangChain RAG system for network installation planning. Automated AWS infrastructure and Jenkins CI/CD.",
+          "result": "Enabled real-time mapping for 100,000+ grid assets, reduced map load latency by 40%, and cut network installation planning effort by 50%."
+        },
+        {
+          "id": "p2",
+          "title": "AI-Assisted Enterprise QA Automation & Event-Driven Platform",
+          "domain": "Distributed Systems",
+          "stack": "Kafka · NestJS · 11 services",
+          "summary": "Split a monolithic test runner into 11 NestJS microservices over Kafka and cut production MTTR by 40% across ~1M daily events.",
+          "problem": "Synchronous service-to-service calls meant one slow test runner stalled the entire QA pipeline, and a failed run stayed invisible until somebody went looking for it.",
+          "approach": "I decomposed the monolithic runner into 11 Kafka-based NestJS microservices: versioned event contracts, idempotent consumers, bounded retries with dead-letter queues, and OpenTelemetry carried through the event envelope. Alongside it, I integrated Keycloak for OAuth 2.0/OIDC single sign-on, automated bug tracking and Jira ticketing workflows, and built AI developer agents on MCP and Claude Code that cut new-service setup from four hours to fifteen minutes.",
+          "result": "1M+ telemetry events a day, 70% lower operational latency, 40% better mean time to recovery."
+        }
+      ]
+    },
+    {
+      "company": "Xotiv Technologies Pvt. Ltd.",
+      "role": "Full Stack Developer",
+      "dates": "December 2023 — June 2025",
+      "projects": [
+        {
+          "id": "p9",
+          "title": "Turf Assistant — Sports & Golf Facility Management Platform",
+          "domain": "Multi-tenant SaaS",
+          "stack": "Angular · TypeScript · Node.js · GraphQL",
+          "summary": "Handled 1M+ daily operational requests with real-time sensor and dispatch syncs at 99.95% uptime during peak facility hours.",
+          "problem": "Modernize end-to-end operations for sports facilities, golf courses, local maintenance contractors and agronomic consulting teams.",
+          "approach": "Architected Angular portals and Node.js/Express APIs over PostgreSQL, used GraphQL for dynamic operations dashboards and REST for third-party integrations, and migrated containerized services to AWS ECS via Jenkins. Built a LangChain pipeline for hardware maintenance planning.",
+          "result": "Handled 1M+ daily requests at 99.95% uptime during peak facility hours, improved field technician utilization by 25%, reduced deployment downtime by 80%, and cut manual scheduling overhead by 35%."
+        },
+        {
+          "id": "p5",
+          "title": "DEVEBOL — AI-Assisted Sports Club Management Platform",
+          "domain": "AI Product Engineering",
+          "stack": "Next.js · Prisma · LangChain",
+          "summary": "A sports club platform with AI features.",
+          "problem": "Sports clubs ran rosters, schedules and member communication by hand, with no AI assistance and no reliable way to reach members in real time.",
+          "approach": "I built the platform on Next.js with Prisma over Supabase, added LangChain and Redis for the AI-assisted features, and wired up real-time member communication through Firebase push notifications, Twilio and SendGrid.",
+          "result": "Roster management, AI-assisted workflows and member notifications running on one platform instead of manual coordination."
+        },
+        {
+          "id": "p10",
+          "title": "AFFCO — Property & Tenant Management SaaS",
+          "domain": "PropTech",
+          "stack": "Next.js · Prisma · Stripe",
+          "summary": "A property management SaaS with automated rent processing.",
+          "problem": "A real estate agency tracked properties, tenants and rent collection across spreadsheets and manual follow-up, with no automated way to process rent or notify tenants.",
+          "approach": "I built the property and tenant management system on Next.js and Prisma, integrated Stripe to automate rent processing, and added SendGrid and Twilio for tenant and staff notifications.",
+          "result": "Rent collection and tenant communication running as one automated workflow instead of spreadsheets and manual follow-up calls."
+        },
+        {
+          "id": "p6",
+          "title": "ReadMyRhythm — Telemedicine & EKG Review Platform",
+          "domain": "Healthcare & Compliance",
+          "stack": "Next.js · Python · FastAPI · LangChain",
+          "summary": "Owned system architecture for an AI-assisted clinician platform processing 50,000 ECGs per month.",
+          "problem": "Enable ingestion of diagnostic ECG/EKG data from smartwatches and personal devices for cardiologist interpretation within 24 hours, while connecting users with cardiac providers.",
+          "approach": "Created a Next.js clinician platform with Python FastAPI file parsing and a LangChain RAG system for AI-assisted first-pass report drafting. Implemented OAuth 2.0/OIDC and secure document access with TrueVault, Supabase and short-lived signed URLs.",
+          "result": "Processes 50,000 ECGs per month through a secure clinician workflow."
+        }
+      ]
+    },
+    {
+      "company": "Tata Consultancy Services (TCS)",
+      "role": "Software Analyst",
+      "dates": "November 2020 — November 2023",
+      "projects": [
+        {
+          "id": "p7",
+          "title": "Incentive Management System — FIAT",
+          "domain": "Enterprise & FinTech",
+          "stack": "Java · REST APIs · Angular · PostgreSQL",
+          "summary": "Owned low-level design for settlement services under the lead architect and optimized a batch processing $50M+ in annual dealer incentives.",
+          "problem": "Optimize the enterprise sales incentive lifecycle with a multi-tier approval pipeline and a high-performance financial settlement engine.",
+          "approach": "Developed Java microservices and Angular dashboards, authored low-level designs for settlement services, partitioned dealer datasets and implemented set-based aggregation. Automated AWS EC2 releases via Jenkins.",
+          "result": "Reduced settlement batch processing from 3 hours to 40 minutes and scaled batch capacity 4x without additional cloud infrastructure costs."
+        },
+        {
+          "id": "p8",
+          "title": "Optical Fiber Management System — Comcast",
+          "domain": "Telecom Infrastructure",
+          "stack": "Angular · TypeScript · Node.js · MongoDB",
+          "summary": "Owned network topology APIs and dashboard queries monitoring more than 15,000 optical fiber nodes.",
+          "problem": "Deliver real-time visibility, route planning and predictive maintenance across extensive optical fiber infrastructure.",
+          "approach": "Created Angular topology dashboards and Node.js REST services on MongoDB, then redesigned complex MongoDB aggregation pipelines for the dashboard query layer.",
+          "result": "Reduced query latency by more than 60%, improving affected queries from repeated 30-second timeouts to approximately 2 seconds."
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Programming languages",
+      "items": [
+        "Python",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "Java (working knowledge)",
+        "SQL",
+        "C++"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        "React.js",
+        "Next.js",
+        "Angular",
+        "HTML5",
+        "CSS3"
+      ]
+    },
+    {
+      "title": "Backend & architecture",
+      "items": [
+        "FastAPI",
+        "Node.js",
+        "NestJS",
+        "Express.js",
+        "RESTful APIs",
+        "GraphQL",
+        "OAuth 2.0 / OIDC",
+        "Microservices",
+        "Event-Driven Architecture",
+        "Kafka",
+        "RabbitMQ",
+        "WebRTC",
+        "Model Context Protocol (MCP)",
+        "Claude Code",
+        "System design",
+        "HLD (High Level Design)",
+        "LLD (Low Level Design)",
+        "Data Structures & Algorithms"
+      ]
+    },
+    {
+      "title": "Cloud & DevOps",
+      "items": [
+        "AWS (EKS, ECS, EC2, S3, Lambda)",
+        "GCP",
+        "Kubernetes",
+        "Docker",
+        "Helm",
+        "Terraform",
+        "Jenkins",
+        "CI/CD",
+        "Git",
+        "Microsoft Entra ID"
+      ]
+    },
+    {
+      "title": "Data & AI",
+      "items": [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "OpenSearch",
+        "Supabase",
+        "GeoServer",
+        "Prisma",
+        "Sequelize",
+        "LLMs",
+        "RAG",
+        "LangChain"
+      ]
+    },
+    {
+      "title": "Quality & observability",
+      "items": [
+        "OpenTelemetry",
+        "Distributed tracing",
+        "Swagger",
+        "Jest",
+        "Code review",
+        "Agile / Scrum",
+        "Sentry",
+        "Datadog"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Technology (B.Tech), Electrical Engineering",
+    "institution": "Academy of Technology (West Bengal University of Technology), West Bengal",
+    "years": "2016 — 2020 · CGPA 8.1",
+    "location": "India · UTC+5:30"
+  },
+  "certifications": [
+    {
+      "title": "Claude Code 101",
+      "issuer": "Claude Academy · Anthropic",
+      "issued": "September 2026",
+      "credentialId": "c749e82dcf22d97d77eaf13e7caa46db",
+      "credentialUrl": "https://academy.claude.com/verify/c749e82dcf22d97d77eaf13e7caa46db"
+    },
+    {
+      "title": "Certified Associate JavaScript Programmer",
+      "issuer": "JS Institute",
+      "issued": "January 2026",
+      "credentialId": "gixL.k6x8.KKpc"
+    },
+    {
+      "title": "PCAP — Certified Associate in Python Programming",
+      "issuer": "OpenEDG",
+      "issued": "October 2025",
+      "credentialUrl": "https://verify.openedg.org/?id=2F2G.Bwkw.p7zS"
+    }
+  ]
+}
