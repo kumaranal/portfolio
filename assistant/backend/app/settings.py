@@ -7,13 +7,17 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="ASSISTANT_", env_file=".env", extra="ignore")
 
-    # Bedrock cross-region inference profile ID (or model ID) for Claude Haiku.
+    # Bedrock cross-region inference profile ID (or model ID) for the chat model.
     # Verify with: aws bedrock list-inference-profiles
     model_id: str = "us.amazon.nova-2-lite-v1:0"
     aws_region: str = "us-east-1"
     max_output_tokens: int = 600
     temperature: float = 0.3
     max_tool_rounds: int = 3
+
+    # Bedrock Guardrail applied to the visitor's message and the model's reply. Empty id -> disabled.
+    guardrail_id: str = ""
+    guardrail_version: str = "DRAFT"
 
     # Request limits
     max_messages: int = 12

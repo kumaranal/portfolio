@@ -32,6 +32,11 @@ data "aws_iam_policy_document" "lambda_app" {
   }
 
   statement {
+    actions   = ["bedrock:ApplyGuardrail"]
+    resources = [aws_bedrock_guardrail.assistant.guardrail_arn]
+  }
+
+  statement {
     actions   = ["dynamodb:UpdateItem"]
     resources = [aws_dynamodb_table.rate_limit.arn]
   }

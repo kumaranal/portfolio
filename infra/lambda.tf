@@ -22,12 +22,14 @@ resource "aws_lambda_function" "api" {
 
   environment {
     variables = {
-      ASSISTANT_MODEL_ID         = var.bedrock_model_id
-      ASSISTANT_AWS_REGION       = var.region
-      ASSISTANT_ALLOWED_ORIGINS  = join(",", var.allowed_origins)
-      ASSISTANT_RATE_LIMIT_TABLE = aws_dynamodb_table.rate_limit.name
+      ASSISTANT_MODEL_ID            = var.bedrock_model_id
+      ASSISTANT_AWS_REGION          = var.region
+      ASSISTANT_ALLOWED_ORIGINS     = join(",", var.allowed_origins)
+      ASSISTANT_RATE_LIMIT_TABLE    = aws_dynamodb_table.rate_limit.name
       ASSISTANT_DAILY_MESSAGE_LIMIT = tostring(var.daily_message_limit)
-      ASSISTANT_ORIGIN_SECRET    = random_password.origin_secret.result
+      ASSISTANT_ORIGIN_SECRET       = random_password.origin_secret.result
+      ASSISTANT_GUARDRAIL_ID        = aws_bedrock_guardrail.assistant.guardrail_id
+      ASSISTANT_GUARDRAIL_VERSION   = aws_bedrock_guardrail_version.assistant.version
     }
   }
 
