@@ -33,17 +33,21 @@ def run_chat(
     max_tokens: int,
     temperature: float,
     max_rounds: int,
+    guardrail: dict | None = None,
 ) -> Iterator[str]:
     messages = list(messages)
     try:
         for _ in range(max_rounds):
-            response = converse_stream(
-                modelId=model_id,
-                system=system,
-                messages=messages,
-                toolConfig=TOOL_CONFIG,
-                inferenceConfig={"maxTokens": max_tokens, "temperature": temperature},
-            )
+            request = {
+                "modelId": model_id,
+                "system": system,
+                "messages": messages,
+                "toolConfig": TOOL_CONFIG,
+                "inferenceConfig": {"maxTokens": max_tokens, "temperature": temperature},
+            }
+            if guardrail:
+                request["guardrailConfig"] = guardrail
+            response = converse_stream(**request)
 
             content: list[dict] = []  # assistant message being rebuilt, in order
             text_parts: list[str] = []
@@ -90,6 +94,8 @@ def run_chat(
                 content.append({"text": "".join(text_parts)})
                 text_parts = []
 
+            if stop_reason == "guardrail_intervened":
+                log.warning("guardrail intervened")  # Bedrock streamed the configured blocked message
             if stop_reason != "tool_use":
                 break
 

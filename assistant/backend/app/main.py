@@ -85,6 +85,15 @@ def chat(body: ChatRequest, request: Request):
 
     system = build_system_blocks(settings.knowledge_path, body.page_section)
     messages = [{"role": m.role, "content": [{"text": m.content}]} for m in body.messages]
+    guardrail = None
+    if settings.guardrail_id:
+        # Scan only what the visitor just typed, not the system prompt or earlier turns.
+        messages[-1]["content"] = [{"guardContent": {"text": {"text": body.messages[-1].content}}}]
+        guardrail = {
+            "guardrailIdentifier": settings.guardrail_id,
+            "guardrailVersion": settings.guardrail_version,
+            "streamProcessingMode": "sync",  # hold output until checked; the UI cannot retract text
+        }
 
     stream = run_chat(
         get_client().converse_stream,
@@ -94,6 +103,7 @@ def chat(body: ChatRequest, request: Request):
         max_tokens=settings.max_output_tokens,
         temperature=settings.temperature,
         max_rounds=settings.max_tool_rounds,
+        guardrail=guardrail,
     )
     return StreamingResponse(
         stream,

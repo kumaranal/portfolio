@@ -172,3 +172,39 @@ def test_unclosed_call_is_released_after_hold_limit():
     f = LeakedCallFilter()
     out = f.feed("navigate_to_section(" + "x" * 100)
     assert "".join(d["delta"] for _, d in out).startswith("navigate_to_section(")
+
+
+def test_guardrail_wraps_only_latest_user_message(make_client, monkeypatch):
+    from app import main
+
+    monkeypatch.setattr(main.settings, "guardrail_id", "gr-123")
+    monkeypatch.setattr(main.settings, "guardrail_version", "2")
+    fake = FakeBedrock(text_events("ok"))
+    body = {"messages": [
+        {"role": "user", "content": "hi"},
+        {"role": "assistant", "content": "hello"},
+        {"role": "user", "content": "what projects?"},
+    ]}
+    make_client(fake).post("/chat", json=body)
+    call = fake.calls[0]
+    assert call["guardrailConfig"]["guardrailIdentifier"] == "gr-123"
+    assert call["guardrailConfig"]["guardrailVersion"] == "2"
+    assert call["guardrailConfig"]["streamProcessingMode"] == "sync"
+    assert call["messages"][0]["content"] == [{"text": "hi"}]
+    assert call["messages"][-1]["content"] == [{"guardContent": {"text": {"text": "what projects?"}}}]
+
+
+def test_no_guardrail_config_when_unset(make_client):
+    fake = FakeBedrock(text_events("ok"))
+    make_client(fake).post("/chat", json=USER)
+    assert "guardrailConfig" not in fake.calls[0]
+
+
+def test_guardrail_block_streams_message_and_finishes(make_client, monkeypatch):
+    from app import main
+
+    monkeypatch.setattr(main.settings, "guardrail_id", "gr-123")
+    fake = FakeBedrock(text_events("I can only answer questions about Anal's work.", stop="guardrail_intervened"))
+    events = parse_sse(make_client(fake).post("/chat", json=USER).text)
+    assert events[-1] == ("done", {})
+    assert len(fake.calls) == 1
